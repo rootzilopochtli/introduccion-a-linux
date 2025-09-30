@@ -69,7 +69,6 @@ Puedes consultar una hoja de referencia rápida en http://asciidoctor.org/docs/a
 
 GitHub renderizará automáticamente los archivos AsciiDoc que terminan en `.adoc`, `.asciidoc`, or `.asc`.
 Para obtener más información, consulta https://github.com/github/markup.
-====
 
 ---
 
