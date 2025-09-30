@@ -62,8 +62,8 @@ Agrega tus sugerencias/correcciones/revisiones mediante un PR.
 
 ---
 
-[NOTA]
-====
+### 📝 NOTA
+
 Este documento ha sido redactado utilizando lenguaje [AsciiDoc](http://asciidoctor.org).
 Puedes consultar una hoja de referencia rápida en http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
 
