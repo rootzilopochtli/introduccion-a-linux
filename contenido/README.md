@@ -22,4 +22,39 @@
 
 ---
 
+## Convenciones
+
+---
+
+En esta serie de publicaciones utilizaremos las siguientes convenciones y prácticas durante el curso.
+
+Cuando el texto haga referencia a la consola de línea de comandos se denotará como sigue:
+
+```
+$ comando
+```
+
+En el manual se utilizan las siguientes advertencias:
+
+[🔗 Referencia](/I282EdVyQEmT5Q5tuxg2qQ)
+---
+
+Las referencias agregan documentación o material externo relevante al tema y donde encontrarlo.
+
+
+[📝 Nota](/8-qEK79LTRC-r2tndlpezA)
+---
+
+Las notas son **consejos**, **atajos** o **enfoques alternativos** al tema o tarea en cuestión. Ignorar una nota no tiene consecuencias negativas, pero podrías perderte algo que te facilite la vida.
+
+[⚠️ Importante](/nT4pHA9fRDOwYM2JKUJNfQ)
+---
+Las secciones importantes ofrecen información que se pasa por alto con facilidad: como cambios de configuración que sólo se aplican a la tarea actual o servicios que deben reiniciarse antes de que se aplique un cambio o actualización. Ignorar estas advertencias no causará pérdida de datos, pero sí irritación y frustración.
+
+[❗Advertencia](/mXCUKu5GQiGrm-xKd9XUew)
+---
+No ignores las advertencias. Si ignoras estas advertencias, lo más probable es que pierdas datos.
+
+---
+
 [EN DESARROLLO]
