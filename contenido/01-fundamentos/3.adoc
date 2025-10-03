@@ -33,6 +33,10 @@ El día a día en la CLI implica navegar y manipular el sistema de archivos. Aqu
 |Crea un archivo vacío o actualiza la marca de tiempo de uno existente.
 |`touch mi_archivo.txt`
 
+|`cat`
+|Muestra el contenido completo de un archivo en la terminal.
+|`cat archivo.txt` (muestra todo el contenido) o `cat archivo1.txt archivo2.txt` concatena múltiples archivos
+
 |`mkdir`
 |Crea un nuevo directorio.
 |`mkdir proyecto/documentos -p` (crea el árbol de directorios si no existe)
