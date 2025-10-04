@@ -105,7 +105,7 @@ Estos bits van más allá de los permisos básicos y otorgan capacidades especia
 * *En Directorios:* Solo el *propietario* del archivo o el `root` puede *eliminar o renombrar* archivos dentro de ese directorio, incluso si otros usuarios tienen permiso de escritura (`w`) en el directorio. Esto previene que los usuarios eliminen los archivos de otros. El mejor ejemplo es el directorio `/tmp`.
 * *Símbolo:* Una `t` en la posición de `x` de Otros.
 
-*Ejemplo de* `chmod` *con bits especiales:* `chmod 2770 directorio_compartido` (Establece SGID y permisos rwxrwx−−−).
+*Ejemplo de* `chmod` *con bits especiales:* `chmod 2770 directorio_compartido` (Establece SGID y permisos rwxrws−−−).
 
 ***
 
