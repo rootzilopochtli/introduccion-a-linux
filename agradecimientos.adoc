@@ -1,0 +1,35 @@
+= Agradecimientos a los Contribuidores
+:author: Alex Callejas (@dark_axl)
+:revdate: 2025-10-03 
+// Actualice esta fecha con la de la primera contribución significativa
+
+El proyecto *Introducción a Linux: De Usuario Básico a Administrador de Sistemas* no podría alcanzar sus objetivos educativos sin la valiosa ayuda y el compromiso de su comunidad.
+
+Agradecemos sinceramente a todos los contribuidores que han dedicado su tiempo y experiencia para revisar, corregir y mejorar este material didáctico. Cada sugerencia, *Pull Request* (PR) y reporte de error es fundamental para asegurar que los contenidos, basados en los temarios LPIC-1, LFCS y RHCSA, mantengan la más alta calidad y precisión.
+
+== Contribuidores Destacados
+
+La siguiente es una lista de las personas que han realizado contribuciones significativas al proyecto, incluyendo la corrección de errores, la adición de ejemplos o la revisión de la estructura del contenido.
+
+[cols="1,2,2"]
+|===
+| Nombre o Alias | Tipo de Contribución | Enlace
+
+| **✨ Gunnar Wolf** | Cambios respecto a FHS que se han hecho más notorios. | link:/https://github.com/gwolf[gwolf]
+| **✨ Aleph Ramos** | Adición del comando ```cat```. | link:/https://github.com/alephramos[alephramos]
+//| **[Nombre del Contribuidor 3]** | Aporte de ejemplos de scripts | [Enlace al perfil de GitHub](https://github.com/alias)
+//| **[Nombre del Contribuidor 3]** | Aporte de ejemplos de scripts | [Enlace al perfil de GitHub](https://github.com/alias)
+|===
+
+== ¿Cómo Unirte a la Lista?
+
+Invitamos a cualquier persona interesada en la educación Linux a contribuir. Si deseas aparecer en esta lista y ayudar a fortalecer la calidad de este recurso, puedes:
+
+* Enviar un *Pull Request* con correcciones ortográficas, técnicas o de estilo.
+* Reportar errores o sugerir mejoras en la pestaña de *Issues*.
+
+Tu participación es una contribución directa a la comunidad hispanohablante de profesionales y entusiastas de Linux.
+
+***
+
+**¡🙏 Gracias Totales 🙏! **
