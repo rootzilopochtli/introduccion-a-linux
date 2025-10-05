@@ -17,7 +17,7 @@ La siguiente es una lista de las personas que han realizado contribuciones signi
 
 | **✨ Gunnar Wolf** | Cambios respecto a FHS que se han hecho más notorios. | https://github.com/gwolf[gwolf]
 | **✨ Aleph Ramos** | Adición del comando ```cat```. | https://github.com/alephramos[alephramos]
-| **✨ Petrohs** | Revisión y corrección de permisos, corrección de enlaces en agradecimientos. | https://github.com/petrohs[petrohs]
+| **✨ Petrohs** | Revisión, corrección de permisos, corrección de enlaces en agradecimientos y sugerencia de uso de licencia. | https://github.com/petrohs[petrohs]
 //| **[Nombre del Contribuidor 3]** | Aporte de ejemplos de scripts | [Enlace al perfil de GitHub](https://github.com/alias)
 //| **[Nombre del Contribuidor 3]** | Aporte de ejemplos de scripts | [Enlace al perfil de GitHub](https://github.com/alias)
 |===
