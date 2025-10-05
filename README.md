@@ -4,6 +4,18 @@ Este repositorio alberga el código, los ejemplos y los materiales de soporte pa
 
 El temario ha sido cuidadosamente sintetizado y estructurado, fusionando los temas más importantes y transversales de las certificaciones **LPIC-1**, **LFCS**, y el curso **RHCSA** (RH124 y RH134), garantizando una ruta de aprendizaje práctica y completa.
 
+## Licencias
+
+Este proyecto utiliza una doble estrategia de licenciamiento para distinguir entre el contenido escrito y el código:
+
+1.  **Documentación (Posts, Imágenes, Diagramas, Archivos `.md`, Archivos `.adoc`):**
+    * **Licencia:** [Creative Commons Atribución-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/deed.es)
+    * **Propósito:** Asegurar que el material educativo y sus derivados permanezcan libres y abiertos.
+
+2.  **Código Fuente (Scripts, Ejemplos de Comandos):**
+    * **Licencia:** [Licencia MIT](https://opensource.org/licenses/MIT)
+    * **Propósito:** Fomentar la máxima reutilización de los ejemplos de código en cualquier proyecto, sin restricciones.
+
 ## 📖 Temario
 
 El contenido está dividido en seis secciones clave, diseñadas para guiarte de forma progresiva desde los conceptos fundamentales hasta la administración avanzada del sistema.
