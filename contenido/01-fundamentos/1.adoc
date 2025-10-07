@@ -1,7 +1,8 @@
-= 1. Introducción a Linux y Arquitectura del Sistema
+= Introducción a Linux y Arquitectura del Sistema
 Alex Callejas
 :doctype: article
 :revdate: Oct 1, 2025
+:keywords: linux, historia, gnu, kernel, shell, distros, boot, runlevels
 
 image::images/portada_1.png[1. Introducción a Linux y Arquitectura del Sistema]
 
