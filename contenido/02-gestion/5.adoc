@@ -1,0 +1,148 @@
+= 🚀 Potencia tu Terminal: Entradas, Salidas y Redirección en Linux
+:author: Alex Callejas
+:revdate: Oct 7, 2025
+:keywords: stdin, stdout, stderr, pipes
+
+image::images/portada_5.png[Entradas, salidas y Redirección en Linux]
+
+Si alguna vez has trabajado en la terminal de Linux, ya sea preparándote para un examen de certificación como *LPIC-1*, *LFCS* o *RHCSA*, o simplemente administrando sistemas, habrás notado que los comandos no solo ejecutan tareas, sino que también _interactúan_ contigo y con el sistema. Entender cómo fluye la información —las *Entradas*, *Salidas* y la *Redirección*— es fundamental para ser un administrador de sistemas eficiente.
+
+== 💡 El Flujo de Datos Estándar: Stdin, Stdout y Stderr
+
+En el corazón de la interacción de la terminal están tres flujos de datos esenciales. Imagínalos como tuberías que conectan los programas.
+
+[cols="1,1,2,5"]
+|===
+|Flujo |Descriptor |Nombre Técnico |Descripción
+
+|*Entrada Estándar* |*0* |`stdin` (Standard Input) |Es el canal por donde un programa espera recibir datos. Por defecto, es el *teclado*.
+|*Salida Estándar* |*1* |`stdout` (Standard Output) |Es el canal por donde un programa envía sus resultados normales y esperados. Por defecto, es la *pantalla* (terminal).
+|*Error Estándar* |*2* |`stderr` (Standard Error) |Es el canal por donde un programa envía mensajes de error o diagnóstico. Por defecto, también es la *pantalla*.
+|===
+
+Todo comando que ejecutas en Linux utiliza (o puede utilizar) estos tres flujos. Saber manejarlos nos da un control tremendo sobre dónde va a parar la información.
+
+---
+
+== 🔁 Redirección: Controlando el Destino de los Datos
+
+La redirección nos permite cambiar los destinos por defecto de los flujos de salida (`stdout` y `stderr`) y el origen de la entrada (`stdin`).
+
+=== Redirección de Salida (Stdout)
+
+En lugar de que el resultado normal de un comando se muestre en pantalla, podemos enviarlo a un archivo.
+
+[cols="1,2,2,4"]
+|===
+|Símbolo |Acción |Ejemplo |Descripción
+
+|`>` |*Sobreescribe* (Overwrite) |`ls -l > lista.txt` |Ejecuta `ls -l` y *crea o reemplaza* el contenido de `lista.txt` con el resultado.
+|`>>` |*Añade* (Append) |`date >> lista.txt` |Ejecuta `date` y *añade* el resultado al final de `lista.txt`.
+|===
+
+=== Redirección de Errores (Stderr)
+
+Para separar los mensajes de error de los resultados normales y del *log* principal del sistema, utilizamos el descriptor *2*.
+
+[cols="1,2,3,4"]
+|===
+|Símbolo |Acción |Ejemplo |Descripción
+
+|`2>` |Redirecciona solo *Stderr (2)* |`find / -name "noexiste" 2> errores.log` |Los mensajes de error de `find` van a `errores.log`. La salida normal (si la hubiera) sigue en pantalla.
+|`2>>` |Añade solo *Stderr (2)* |`find / -name "noexiste" 2>> errores.log` |Añade los errores al final del archivo.
+|===
+
+=== Redirección de Ambas Salidas: Stdout y Stderr
+
+A menudo, queremos enviar *tanto la salida normal como los errores* al mismo archivo. Para esto, usamos el atajo `&>`.
+
+[cols="1,2,2,4"]
+|===
+|Símbolo |Acción |Ejemplo |Descripción
+
+|`&>` |Redirecciona *Stdout (1) y Stderr (2)* |`comando &> todo.log` |La salida normal y los errores van juntos a `todo.log`. (También se puede usar `comando > todo.log 2>&1`).
+|===
+
+---
+
+== ⚙️ Tuberías (Pipes): Conectando Comandos
+
+La *tubería* o *pipe* (`|`) es uno de los conceptos más poderosos y usados en la administración de Linux. Permite tomar la `stdout` *(1)* de un comando y usarla como la `stdin` *(0)* del siguiente comando.
+
+En esencia, estás *encadenando* la ejecución, transformando datos paso a paso.
+
+image::images/pipes.png[]
+
+=== Ejemplo Práctico de Pipe
+
+Imagina que quieres saber *cuántos archivos de configuración* (`.conf`) tienes en el directorio actual. Ejecuta:
+
+[source,bash]
+----
+$ ls -l | grep ".conf" | wc -l
+----
+
+1. `ls -l`: Lista detallada de archivos (Stdout).
+2. `| grep ".conf"`: La lista anterior se convierte en la entrada de `grep`, que filtra las líneas que contienen ".conf" (`stdout`).
+3. `| wc -l`: La lista filtrada se convierte en la entrada de `wc -l` (word count - lines), que simplemente *cuenta el número de líneas* resultantes y muestra el total.
+
+¡Con un solo *pipe* transformaste una lista de archivos en un simple número!
+
+---
+
+== 🔗 Encadenamiento de Comandos: Ejecución Condicional
+
+El *pipe* conecta comandos por el flujo de datos. El *encadenamiento* conecta comandos por la *ejecución*, permitiéndote controlar si un comando debe ejecutarse solo después de que el anterior haya tenido éxito.
+
+Esto se basa en el *código de salida* (exit code) de cada comando:
+
+* Un código de salida de `0` significa que el comando se ejecutó *con éxito*.
+* Un código de salida *distinto de* `0` significa que hubo un *fallo*.
+
+[cols="1,2,4,2"]
+|===
+|Operador |Nombre |Acción |Ejemplo
+
+|`;` |Separador |Ejecuta los comandos *secuencialmente*, sin importar el éxito del anterior. |`mkdir nuevo; cd nuevo; pwd`
+|`&&` |AND Lógico |Ejecuta el segundo comando *solo si* el primero fue exitoso (`código de salida = 0`). |`ping -c 1 8.8.8.8 && echo "Conexión OK"`
+|===
+
+El uso de `&&` y `||` es crucial para crear *scripts* robustos donde no quieres que un paso crítico se ejecute si la preparación anterior falló (por ejemplo, no intentes copiar un archivo si la descarga falló).
+
+== Resumen y Próximos Pasos
+
+Dominar la redirección y las tuberías no es solo un requisito para aprobar el RHCSA o el LPIC-1; es la habilidad que te permite *automatizar, depurar y procesar* datos de manera eficiente como un verdadero profesional de Linux.
+
+*¡Tu Turno!* Intenta practicar encadenando comandos para:
+
+1. Ver el espacio libre en disco.
+2. Filtrar solo la línea que contiene el total.
+3. Guardar ese resultado en un archivo llamado `disco_hoy.txt`.
+
+¡Hasta la próxima publicación! 👋
+
+---
+
+=== 📝 Nota sobre Licencias y Contribución:
+
+Como anunciamos previamente en nuestra link:https://x.com/rootzilopochtli[cuenta de X], todo el contenido de nuestros posts e imágenes se comparte bajo la licencia *CC BY-SA 4.0*. El código de ejemplo, cuando sea aplicable, se licencia bajo la *MIT License*.
+
+Además, hemos habilitado las discusiones en nuestro repositorio de GitHub para fomentar la colaboración y el intercambio de conocimientos. ¡Te invitamos a participar!
+
+Puedes encontrar el anuncio original en X aquí: link:https://x.com/rootzilopochtli/status/1974971692582850952[].
+
+---
+
+== Invitación a la Comunidad 🚀
+
+Este *post* forma parte de una serie dedicada a la arquitectura y administración de sistemas Linux. ¡Queremos construir el mejor recurso posible *con tu ayuda*!
+
+Te invitamos a:
+
+* *Clonar el Repositorio:* El código fuente de todos nuestros artículos está disponible en *GitHub*.
+* *Contribuir:* Si encuentras algún error, tienes sugerencias para mejorar la claridad de los conceptos o deseas proponer correcciones técnicas, no dudes en enviar un *Pull Request* (Solicitud de extracción).
+* *Comentar:* ¿Tienes una pregunta o un punto de vista diferente sobre algún concepto? Abre un *Issue* (Incidencia) en el repositorio para iniciar la discusión.
+
+Tu colaboración es vital para mantener este contenido preciso y actualizado.
+
+*¡Encuentra el repositorio y participa aquí:* link:https://github.com/rootzilopochtli/introduccion-a-linux[github.com/rootzilopochtli/introduccion-a-linux]
