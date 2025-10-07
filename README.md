@@ -18,10 +18,10 @@ Este proyecto utiliza una doble estrategia de licenciamiento para distinguir ent
 
 ## 📖 Temario
 
-El contenido está dividido en seis secciones clave, diseñadas para guiarte de forma progresiva desde los conceptos fundamentales hasta la administración avanzada del sistema.
+El contenido está dividido en seis módulos clave, diseñadas para guiarte de forma progresiva desde los conceptos fundamentales hasta la administración avanzada del sistema.
 
 ### 1. Fundamentos y Arquitectura del Sistema
-Esta sección introduce al entorno Linux, cubriendo la historia, la arquitectura básica (**Kernel**, **Shell**, distribuciones), el proceso de arranque (como **GRUB/GRUB2**), y los niveles de ejecución (**systemd targets**). Se explora también la **Estructura de Directorios de Linux (FHS)** y la navegación básica en la **Línea de Comandos (CLI)**.
+Este módulo introduce al entorno Linux, cubriendo la historia, la arquitectura básica (**Kernel**, **Shell**, distribuciones), el proceso de arranque (como **GRUB/GRUB2**), y los niveles de ejecución (**systemd targets**). Se explora también la **Estructura de Directorios de Linux (FHS)** y la navegación básica en la **Línea de Comandos (CLI)**.
 
 ### 2. Gestión de Archivos y Flujo de Comandos
 Profundiza en la manipulación de archivos, incluyendo:
@@ -85,4 +85,6 @@ Para obtener más información, consulta https://github.com/github/markup.
 ---
 
 ## ✍️ Créditos
-**Autor:** Alex Callejas (@dark\_axl) 2025.
+**Autor:** [Alex Callejas](https://github.com/AlexCallejas).
+
+Copyright (c) 2025 `rootzilopochtli`
