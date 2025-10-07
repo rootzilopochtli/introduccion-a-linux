@@ -31,11 +31,13 @@ El FHS establece una serie de directorios con funciones muy específicas. Aquí 
 |Directorio |Descripción
 |`/` |*Raíz (Root)*. Es el nivel superior de toda la jerarquía de directorios. Todos los demás directorios y archivos se ramifican a partir de este punto.
 |`/home` |Contiene los *directorios personales* de los usuarios. Aquí es donde los usuarios almacenan sus archivos, configuraciones y datos. Por ejemplo, `/home/usuario`.
-|`/bin` |*Binarios de usuario esenciales*. Contiene comandos ejecutables que son necesarios para arrancar y reparar el sistema, y que son utilizados por todos los usuarios (ej: `ls`, `cat`, `mv`).
 |`/etc` |*Archivos de configuración*. Contiene los archivos de configuración estáticos, específicos de la máquina, que controlan el sistema (ej: `/etc/passwd`, `/etc/fstab`).
 |`/var` |*Archivos de datos variables*. Contiene datos que se modifican con frecuencia, como *logs* del sistema (`/var/log`), *spool* de correo o impresión, y archivos temporales de aplicaciones web.
 |`/boot` |*Archivos de arranque*. Contiene los archivos necesarios para el proceso de arranque de Linux, incluyendo el *kernel* y los archivos del gestor de arranque *GRUB*.
-|`/usr` |*Jerarquía de sistema compartida (Unix System Resources)*. Contiene la mayoría de los programas ejecutables, bibliotecas, documentación y archivos fuente que no son esenciales para el arranque (ej: `/usr/bin`, `/usr/lib`). Es grande y solo de lectura en el uso normal.
+|`/usr` |*Jerarquía de sistema compartida (Unix System Resources)*. Contiene la mayoría de los programas ejecutables, bibliotecas, documentación y archivos fuente (ej: `/usr/bin`, `/usr/lib`). Es grande y solo de lectura en el uso normal.
+|`/usr/bin`|*Binarios de usuario*. Contiene todos los comandos ejecutables, y que son utilizados por todos los usuarios (ej: `ls`, `cat`, `mv`).
+|`/usr/lib`|*Bibliotecas*. Contiene las bibliotecas de ligado dinámico (típicamente denominadas `*.so`) con que pueden vincularse los diversos programas que utilizan los usuarios.
+|`/usr/sbin`|*Binarios de administración*. Contiene todos los comandos ejecutables que son principalmente utilizados por el administrador (ej: `fdisk`, `adduser`, y diversos demonios).
 |`/tmp` |*Archivos temporales*. Contiene archivos temporales creados por el sistema y los usuarios. Su contenido se borra a menudo al reiniciar el sistema.
 |===
 

@@ -3,7 +3,7 @@ Alex Callejas
 :doctype: article
 :revdate: Oct 1, 2025
 
-image::https://cdn.hashnode.com/res/hashnode/image/upload/v1759286295118/11117891-f726-44e7-b74f-3fcc2044a537.png?w=1600&h=840&fit=crop&crop=entropy&auto=compress,format&format=webp[1. Introducción a Linux y Arquitectura del Sistema]
+image::images/portada_1.png[1. Introducción a Linux y Arquitectura del Sistema]
 
 == Historia y filosofía del código abierto (Open Source)
 
@@ -12,7 +12,7 @@ image::https://cdn.hashnode.com/res/hashnode/image/upload/v1759286295118/1111789
 En 1970, **Ken Thompson** escribe el primer sistema operativo **Unix** en una **PDP-7**, basado en **Multics** (una derivación del proyecto MAC de los Laboratorios Bell que creó el sistema operativo de tiempo compartido _Multiplexed Information and Computing Service_). Su compañero de proyecto, **Brian Kernighan**, sugiere el nombre **UNICS** (_Uniplexed Information & Computing Service_). Consiste en un **núcleo (kernel)**, un **intérprete de comandos (shell)**, un editor y un ensamblador (el ensamblador guarda los archivos como «a.out»). En 1972, otro de sus socios en el proyecto, **Dennis Ritchie**, crea el **lenguaje C** que será una parte fundamental del sistema operativo.
 
 .Figura 1: Dennis Ritchie y Ken Thompson en la PDP-11 en 1972. Bell Labs.
-image::https://cdn.hashnode.com/res/hashnode/image/upload/v1759285331171/fae41be5-f79e-4582-9e76-c13b5341fb27.png?auto=compress,format&format=webp[]
+image::images/Dennis_Ritchie_&_Ken_Thompson.png[]
 
 A partir de entonces continuaron los esfuerzos por crear sistemas operativos compatibles con el hardware emergente, chips más rápidos y capacidades cada vez mayores. Al mismo tiempo, surgían dos tendencias para el desarrollo de nuevos sistemas: por un lado, las grandes corporaciones hacían privado su código, llegando incluso a litigios como el de **AT&T** (_USL - UNIX System Laboratories, Inc._) contra **BSD** (_Berkeley Software Design, Inc._), ya que **BSD** contenía código **Unix** propiedad de **AT&T**; por otro lado, _la comunidad de estudiantes y entusiastas_ aportaba código sin ánimo de lucro para el desarrollo y mejora del sistema operativo.
 
