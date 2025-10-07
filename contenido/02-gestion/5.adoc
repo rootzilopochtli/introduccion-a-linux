@@ -49,6 +49,7 @@ Para separar los mensajes de error de los resultados normales y del *log* princi
 |Símbolo |Acción |Ejemplo |Descripción
 
 |`2>` |Redirecciona solo *Stderr (2)* |`find / -name "noexiste" 2> errores.log` |Los mensajes de error de `find` van a `errores.log`. La salida normal (si la hubiera) sigue en pantalla.
+|`2>` |Redirecciona solo *Stderr (2)* |`find / -name "miarchivo.txt" 2>/dev/null` |Los mensajes de error de `find` (como permisos denegados) se descartan al enviar la salida de errores al archivo especial /dev/null. Esto permite mostrar cómo se pueden ocultar los errores de un comando, algo muy útil cuando buscas archivos por todo el sistema y no quieres que los mensajes de error llenen tu terminal.
 |`2>>` |Añade solo *Stderr (2)* |`find / -name "noexiste" 2>> errores.log` |Añade los errores al final del archivo.
 |===
 
