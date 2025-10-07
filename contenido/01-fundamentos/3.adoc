@@ -1,8 +1,10 @@
-= Post 3: Trabajando con la Línea de Comandos (CLI) 💻
+= Trabajando con la Línea de Comandos (CLI) 💻
 :author: Alex Callejas
 :doctype: article
 :revdate: Oct 3, 2025
 :keywords: linux, bash, cli, comandos
+
+image::images/portada_3.png[Trabajando con la línea de comandos (CLI)]
 
 [abstract]
 ¡Bienvenido/a a la tercera entrega de nuestra serie sobre fundamentos de *Linux* para certificaciones! Si las entradas anteriores te prepararon para el viaje, esta te equipará con el volante y el mapa: vamos a dominar la *Línea de Comandos (CLI)*, la herramienta más potente en el arsenal de cualquier administrador de sistemas.

@@ -4,6 +4,8 @@
 :revdate: Oct 2, 2025
 :keywords: linux, fhs, directorios, filesystem, comandos
 
+image::images/portada_2.png[Estructura de directorios Linux]
+
 La estructura de directorios de Linux no es arbitraria; se rige por el estándar *Filesystem Hierarchy Standard (FHS)*, el cual establece un conjunto de reglas sobre cómo debe ser la estructura de directorios de un sistema operativo Linux.
 
 Este estándar define los propósitos, ubicaciones y contenidos esperados para los directorios principales, asegurando que el sistema operativo y las aplicaciones puedan funcionar de manera predecible en cualquier distribución de Linux.
