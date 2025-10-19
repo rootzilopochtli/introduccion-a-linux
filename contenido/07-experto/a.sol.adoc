@@ -51,16 +51,14 @@ image::images/portada_exp_1.png[Módulo Experto: Desafíos Prácticos del Admini
 |Instrucciones (Paso a paso) |Solución
 |**1. Tarea:** En el directorio `/tmp`, crea la estructura de directorios `/proyecto/src`, `/proyecto/docs` y `/proyecto/bin`. Dentro de `/proyecto/src`, crea un archivo vacío llamado `main.sh`. *Todo en una sola línea de comando.*
 |
-[source, bash]
-----
-mkdir -p /tmp/proyecto/{src,docs,bin} && touch /tmp/proyecto/src/main.sh
-----
+``
+$ mkdir -p /tmp/proyecto/{src,docs,bin} && touch /tmp/proyecto/src/main.sh
+``
 |**2. Verificación:** Confirma la existencia de la estructura y el archivo.
 |
-[source, bash]
-----
-ls -R /tmp/proyecto
-----
+``
+$ ls -R /tmp/proyecto
+``
 |===
 
 === Reactivo 2: Copia y Comodines
@@ -71,16 +69,14 @@ ls -R /tmp/proyecto
 |Instrucciones (Paso a paso) |Solución
 |**1. Configuración:** Crea varios archivos de texto en `/tmp/proyecto/docs`.
 |
-[source, bash]
-----
-touch /tmp/proyecto/docs/{carta,capitulo,reporte,nota}.txt
-----
+``
+$ touch /tmp/proyecto/docs/{carta,capitulo,reporte,nota}.txt
+``
 |**2. Tarea:** Copia solo los archivos `.txt` en el directorio `/tmp/proyecto/docs` que *empiezan por la letra `c`* a una nueva carpeta llamada `/tmp/backups`.
 |
-[source, bash]
-----
-mkdir /tmp/backups && cp /tmp/proyecto/docs/c*.txt /tmp/backups
-----
+``
+$ mkdir /tmp/backups && cp /tmp/proyecto/docs/c*.txt /tmp/backups
+``
 |===
 
 === Reactivo 3: Obtención de Ayuda (`info`)
@@ -91,12 +87,11 @@ mkdir /tmp/backups && cp /tmp/proyecto/docs/c*.txt /tmp/backups
 |Instrucciones (Paso a paso) |Solución
 |**1. Tarea:** Abre el manual de ayuda de `cp` usando el comando `info`.
 |
-[source, bash]
-----
-info cp
-----
+``
+$ info cp
+``
 |**2. Tarea:** Una vez dentro, busca la sección sobre la opción `-p` (preservar atributos).
-|*Dentro de info:* Presiona `s` (search) y escribe `preserve`.
+|*Dentro de `info`:* Presiona `s` (search) y escribe `preserve`.
 |===
 
 == II. Ejercicios de Permisos y Propiedad
@@ -109,22 +104,19 @@ info cp
 |Instrucciones (Paso a paso) |Solución
 |**1. Configuración:** Crea un archivo en `/tmp/secreto_de_permisos.conf`.
 |
-[source, bash]
-----
-touch /tmp/secreto_de_permisos.conf
-----
+``
+$ touch /tmp/secreto_de_permisos.conf
+``
 |**2. Tarea:** Aplica los permisos `rwxr-x---`. Notación octal: Propietario (7), Grupo (5), Otros (0).
 |
-[source, bash]
-----
-chmod 750 /tmp/secreto_de_permisos.conf
-----
+``
+$ chmod 750 /tmp/secreto_de_permisos.conf
+``
 |**3. Verificación:** Muestra los permisos aplicados.
 |
-[source, bash]
-----
-ls -l /tmp/secreto_de_permisos.conf
-----
+``
+$ ls -l /tmp/secreto_de_permisos.conf
+``
 |===
 
 === Reactivo 5: El Sticky Bit en Directorios (LFCS/RHCSA)
@@ -135,16 +127,14 @@ ls -l /tmp/secreto_de_permisos.conf
 |Instrucciones (Paso a paso) |Solución
 |**1. Configuración:** Crea el directorio `/tmp/compartido` y establece permisos `rwxrwxrwt`.
 |
-[source, bash]
-----
-mkdir /tmp/compartido && chmod 1777 /tmp/compartido
-----
+``
+$ mkdir /tmp/compartido && chmod 1777 /tmp/compartido
+``
 |**2. Tarea:** Asegúrate de que el *Sticky Bit* (la `t`) esté aplicado.
 |
-[source, bash]
-----
-ls -ld /tmp/compartido
-----
+``
+$ ls -ld /tmp/compartido
+``
 |===
 
 === Reactivo 6: Cambio de Grupo Propietario
@@ -155,16 +145,14 @@ ls -ld /tmp/compartido
 |Instrucciones (Paso a paso) |Solución
 |**1. Configuración:** Crea el grupo `sysadmin` y el archivo `/tmp/archivo_grupo.txt`.
 |
-[source, bash]
-----
-sudo groupadd sysadmin && touch /tmp/archivo_grupo.txt
-----
+``
+$ sudo groupadd sysadmin && touch /tmp/archivo_grupo.txt
+``
 |**2. Tarea:** Cambia el grupo propietario del archivo a `sysadmin`.
 |
-[source, bash]
-----
-sudo chgrp sysadmin /tmp/archivo_grupo.txt
-----
+``
+$ sudo chgrp sysadmin /tmp/archivo_grupo.txt
+``
 |===
 
 === Reactivo 7: Uso de ACLs para Acceso Fino (RHCSA/LFCS)
@@ -175,22 +163,19 @@ sudo chgrp sysadmin /tmp/archivo_grupo.txt
 |Instrucciones (Paso a paso) |Solución
 |**1. Configuración:** Asegúrate de que tienes el paquete de ACLs (`acl`) instalado y crea el usuario `ana`.
 |
-[source, bash]
-----
-sudo useradd ana
-----
+``
+$ sudo useradd ana
+``
 |**2. Tarea:** Usa `setfacl` para dar permiso de *solo lectura* (`r`) al usuario `ana` sobre el archivo `/tmp/archivo_grupo.txt`.
 |
-[source, bash]
-----
-sudo setfacl -m u:ana:r /tmp/archivo_grupo.txt
-----
+``
+$ sudo setfacl -m u:ana:r /tmp/archivo_grupo.txt
+``
 |**3. Verificación:** Muestra la ACL para confirmar el permiso.
 |
-[source, bash]
-----
-getfacl /tmp/archivo_grupo.txt
-----
+``
+$ getfacl /tmp/archivo_grupo.txt
+``
 |===
 
 == III. Ejercicios de Gestión de Usuarios y `sudo`
@@ -203,22 +188,19 @@ getfacl /tmp/archivo_grupo.txt
 |Instrucciones (Paso a paso) |Solución
 |**1. Tarea:** Crea el directorio `/data/usuarios` (si no existe).
 |
-[source, bash]
-----
-sudo mkdir -p /data/usuarios
-----
+``
+$ sudo mkdir -p /data/usuarios
+``
 |**2. Tarea:** Crea un usuario llamado `analista` y establece su directorio *home* en `/data/usuarios/analista`.
 |
-[source, bash]
-----
-sudo useradd -d /data/usuarios/analista analista
-----
+``
+$ sudo useradd -d /data/usuarios/analista analista
+``
 |**3. Verificación:** Confirma la ruta del *home* en `/etc/passwd`.
 |
-[source, bash]
-----
-grep analista /etc/passwd
-----
+``
+$ grep analista /etc/passwd
+``
 |===
 
 === Reactivo 9: Modificación de Grupos
@@ -229,16 +211,14 @@ grep analista /etc/passwd
 |Instrucciones (Paso a paso) |Solución
 |**1. Tarea:** Añade el usuario `analista` al grupo `desarrollo`. (Asume que el grupo ya existe o lo creas con `sudo groupadd desarrollo`).
 |
-[source, bash]
-----
-sudo usermod -aG desarrollo analista
-----
+``
+$ sudo usermod -aG desarrollo analista
+``
 |**2. Verificación:** Confirma la membresía de `analista` en el grupo.
 |
-[source, bash]
-----
-groups analista
-----
+``
+$ groups analista
+``
 |===
 
 === Reactivo 10: Configuración de `sudo` sin Contraseña (LFCS/RHCSA)
@@ -249,23 +229,21 @@ groups analista
 |Instrucciones (Paso a paso) |Solución
 |**1. Tarea:** Edita el archivo `/etc/sudoers` de forma segura.
 |
-[source, bash]
-----
+``
 sudo visudo
-----
+``
 |**2. Tarea:** Añade la línea necesaria para que el usuario `analista` pueda ejecutar el comando `/usr/sbin/service cron restart` *sin contraseña*.
 |
-[source, bash]
-----
-# Dentro de visudo, añadir:
+``
+# Dentro de `visudo`, añadir:
+
 analista ALL=(ALL) NOPASSWD: /usr/sbin/service cron restart
-----
+``
 |**3. Verificación:** Prueba la ejecución del comando.
 |
-[source, bash]
-----
-sudo -u analista sudo -n /usr/sbin/service cron restart
-----
+``
+$ sudo -u analista sudo -n /usr/sbin/service cron restart
+``
 |===
 
 == IV. Ejercicios de Texto, Redirección y Enlaces
@@ -276,18 +254,16 @@ sudo -u analista sudo -n /usr/sbin/service cron restart
 [cols="1,1", options="header"]
 |===
 |Instrucciones (Paso a paso) |Solución
-|**1. Tarea:** Utiliza una tubería (`\|`) para filtrar las líneas con `/bin/bash` en `/etc/passwd`, contarlas (`wc -l`) y redirigir el resultado a un archivo llamado `/tmp/conteo_bash.txt`.
+|**1. Tarea:** Utiliza una tubería (`\|`) para filtrar las líneas con `/bin/bash` en `/etc/passwd`, contarlas (`wc -l`) y redirigir el resultado a un archivo llamado `/tmp/conteo_bash.txt`. 
 |
-[source, bash]
-----
-grep /bin/bash /etc/passwd | wc -l > /tmp/conteo_bash.txt
-----
+``
+$ grep /bin/bash /etc/passwd \| wc -l > /tmp/conteo_bash.txt
+``
 |**2. Verificación:** Muestra el contenido del archivo resultante.
 |
-[source, bash]
-----
-cat /tmp/conteo_bash.txt
-----
+``
+$ cat /tmp/conteo_bash.txt
+``
 |===
 
 === Reactivo 12: Búsqueda Contextual con `grep`
@@ -298,10 +274,9 @@ cat /tmp/conteo_bash.txt
 |Instrucciones (Paso a paso) |Solución
 |**1. Tarea:** Busca la cadena `root` en `/etc/shadow` y muestra una línea de contexto *antes (`-B 1`)* y una línea de contexto *después (`-A 1`)* del resultado.
 |
-[source, bash]
-----
-sudo grep -B 1 -A 1 root /etc/shadow
-----
+``
+$ sudo grep -B 1 -A 1 root /etc/shadow
+``
 |===
 
 === Reactivo 13: Sustitución con `sed` (LFCS/RHCSA)
@@ -312,16 +287,14 @@ sudo grep -B 1 -A 1 root /etc/shadow
 |Instrucciones (Paso a paso) |Solución
 |**1. Configuración:** Crea un archivo de configuración de prueba.
 |
-[source, bash]
-----
-echo 'ServerName localhost' > /tmp/webserver.conf
-----
+``
+$ echo 'ServerName localhost' > /tmp/webserver.conf
+``
 |**2. Tarea:** Reemplaza *todas las ocurrencias* de `localhost` por `produccion.local` en `/tmp/webserver.conf` y muéstralo en pantalla.
 |
-[source, bash]
-----
-sed 's/localhost/produccion.local/g' /tmp/webserver.conf
-----
+``
+$ sed 's/localhost/produccion.local/g' /tmp/webserver.conf
+``
 |===
 
 === Reactivo 14: Enlaces Duros y Blandos
@@ -332,22 +305,19 @@ sed 's/localhost/produccion.local/g' /tmp/webserver.conf
 |Instrucciones (Paso a paso) |Solución
 |**1. Configuración:** Crea un archivo de texto.
 |
-[source, bash]
-----
-echo "Contenido original" > /tmp/inodo_original.txt
-----
+``
+$ echo "Contenido original" > /tmp/inodo_original.txt
+``
 |**2. Tarea:** Crea un *enlace duro* (`enlace_duro.txt`) y un *enlace blando* (`enlace_blando.txt`) al archivo original.
 |
-[source, bash]
-----
-ln /tmp/inodo_original.txt /tmp/enlace_duro.txt && ln -s /tmp/inodo_original.txt /tmp/enlace_blando.txt
-----
+``
+$ ln /tmp/inodo_original.txt /tmp/enlace_duro.txt && ln -s /tmp/inodo_original.txt /tmp/enlace_blando.txt
+``
 |**3. Verificación:** Muestra los números de inodo (`-i`). El enlace duro debe compartir el inodo.
 |
-[source, bash]
-----
-ls -i /tmp/inodo_original.txt /tmp/enlace_duro.txt /tmp/enlace_blando.txt
-----
+``
+$ ls -i /tmp/inodo_original.txt /tmp/enlace_duro.txt /tmp/enlace_blando.txt
+``
 |===
 
 == V. Ejercicios de Almacenamiento y Montaje
@@ -365,16 +335,14 @@ Los ejercicios 15, 16 y 17 asumen la existencia de dispositivos de bloque adicio
 |Instrucciones (Paso a paso) |Solución
 |**1. Tarea:** Muestra un listado de bloques *legible por humanos* y que incluya el tamaño y el tipo.
 |
-[source, bash]
-----
-lsblk -h
-----
+``
+$ lsblk -h
+``
 |**2. Tarea:** Muestra el uso del espacio de disco de los sistemas de archivos montados, en formato legible por humanos y mostrando el tipo de sistema de archivos.
 |
-[source, bash]
-----
-df -hT
-----
+``
+$ df -hT
+``
 |===
 
 === Reactivo 16: Montaje Temporal
@@ -385,22 +353,19 @@ df -hT
 |Instrucciones (Paso a paso) |Solución
 |**1. Tarea:** Crea el punto de montaje temporal `/mnt/tempdata`.
 |
-[source, bash]
-----
-sudo mkdir /mnt/tempdata
-----
+``
+$ sudo mkdir /mnt/tempdata
+``
 |**2. Tarea:** Monta la partición `/dev/sdb1` (asumiendo formato) en el punto de montaje.
 |
-[source, bash]
-----
-sudo mount /dev/sdb1 /mnt/tempdata
-----
+``
+$ sudo mount /dev/sdb1 /mnt/tempdata
+``
 |**3. Verificación:** Muestra el uso del disco del punto de montaje.
 |
-[source, bash]
-----
-df -h /mnt/tempdata
-----
+``
+$ df -h /mnt/tempdata
+``
 |===
 
 === Reactivo 17: Montaje Persistente con `/etc/fstab`
@@ -411,29 +376,26 @@ df -h /mnt/tempdata
 |Instrucciones (Paso a paso) |Solución
 |**1. Configuración:** Consigue el UUID de `/dev/sdb2`.
 |
-[source, bash]
-----
-sudo blkid /dev/sdb2
-----
+``
+$ sudo blkid /dev/sdb2
+``
 |**2. Tarea:** Crea el punto de montaje `/data/archivos`.
 |
-[source, bash]
-----
-sudo mkdir -p /data/archivos
-----
+``
+$ sudo mkdir -p /data/archivos
+``
 |**3. Tarea:** Añade la entrada necesaria en `/etc/fstab` para que se monte como `xfs` en `/data/archivos`, con valores predeterminados y la opción `nofail`.
 |
-[source, bash]
-----
+``
 # Ejemplo de entrada en /etc/fstab:
+
 UUID=[UUID_AQUI] /data/archivos xfs defaults,nofail 0 0
-----
+``
 |**4. Verificación (Sin reiniciar):** Prueba si la nueva entrada de `fstab` funciona.
 |
-[source, bash]
-----
-sudo mount -a
-----
+``
+$ sudo mount -a
+``
 |===
 
 == VI. Ejercicios de LVM (Énfasis RHCSA/LFCS)
@@ -451,24 +413,21 @@ Estos ejercicios requieren al menos dos discos virtuales adicionales sin partici
 |Instrucciones (Paso a paso) |Solución
 |**1. Tarea:** Crea un PV en `/dev/sdb` y `/dev/sdc`.
 |
-[source, bash]
-----
-sudo pvcreate /dev/sdb /dev/sdc
-----
+``
+$ sudo pvcreate /dev/sdb /dev/sdc
+``
 |**2. Tarea:** Crea un VG llamado `prod_vg` con ambos PV.
 |
-[source, bash]
-----
-sudo vgcreate prod_vg /dev/sdb /dev/sdc
-----
+``
+$ sudo vgcreate prod_vg /dev/sdb /dev/sdc
+``
 |**3. Tarea:** Crea un LV llamado `lv_data` de 10GB, formatéalo como `ext4` y móntalo en `/datos_prod`.
 |
-[source, bash]
-----
-sudo lvcreate -n lv_data -L 10G prod_vg
-sudo mkfs.ext4 /dev/prod_vg/lv_data
-sudo mkdir /datos_prod && sudo mount /dev/prod_vg/lv_data /datos_prod
-----
+``
+$ sudo lvcreate -n lv_data -L 10G prod_vg
+$ sudo mkfs.ext4 /dev/prod_vg/lv_data
+$ sudo mkdir /datos_prod && sudo mount /dev/prod_vg/lv_data /datos_prod
+``
 |===
 
 === Reactivo 19: Ampliación de Volumen (Ext4)
@@ -479,22 +438,19 @@ sudo mkdir /datos_prod && sudo mount /dev/prod_vg/lv_data /datos_prod
 |Instrucciones (Paso a paso) |Solución
 |**1. Tarea:** Amplía el Volumen Lógico `lv_data` en 5GB.
 |
-[source, bash]
-----
-sudo lvextend -L +5G /dev/prod_vg/lv_data
-----
+``
+$ sudo lvextend -L +5G /dev/prod_vg/lv_data
+``
 |**2. Tarea:** Redimensiona el sistema de archivos `ext4` para que ocupe el nuevo espacio del LV.
 |
-[source, bash]
-----
-sudo resize2fs /dev/prod_vg/lv_data
-----
+``
+$ sudo resize2fs /dev/prod_vg/lv_data
+``
 |**3. Verificación:** Muestra el nuevo tamaño del punto de montaje.
 |
-[source, bash]
-----
-df -h /datos_prod
-----
+``
+$ df -h /datos_prod
+``
 |===
 
 === Reactivo 20: Ampliación al Espacio Libre Total (XFS - RHCSA)
@@ -505,22 +461,19 @@ df -h /datos_prod
 |Instrucciones (Paso a paso) |Solución
 |**1. Tarea:** Amplía el LV `lv_data` para usar *el 100% del espacio libre restante* del `prod_vg`.
 |
-[source, bash]
-----
-sudo lvextend -l +100%FREE /dev/prod_vg/lv_data
-----
+``
+$ sudo lvextend -l +100%FREE /dev/prod_vg/lv_data
+``
 |**2. Tarea:** Redimensiona el sistema de archivos *XFS* para que reconozca el nuevo espacio (usando el punto de montaje `/datos_prod`).
 |
-[source, bash]
-----
-sudo xfs_growfs /datos_prod
-----
+``
+$ sudo xfs_growfs /datos_prod
+``
 |**3. Verificación:** Muestra el nuevo tamaño del punto de montaje.
 |
-[source, bash]
-----
-df -h /datos_prod
-----
+``
+$ df -h /datos_prod
+``
 |===
 
 == Conclusión y Próximos Pasos
