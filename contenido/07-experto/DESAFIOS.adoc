@@ -1,0 +1,60 @@
+= Índice de Desafíos Prácticos - Módulo Experto
+Alex Callejas
+:doctype: article
+:revdate: Oct 18, 2025
+:keywords: ejercicios, comandos, lpic-1, lfcs, rhcsa
+
+Este documento sirve como el índice principal para el **Módulo Experto: Desafíos Prácticos del Administrador Linux**.
+
+Aquí encontrarás los enlaces directos a los archivos de ejercicios y sus soluciones correspondientes.
+
+[NOTE]
+====
+Recomendamos encarecidamente intentar resolver los ejercicios en el archivo *{Desafíos Prácticos}* antes de consultar las soluciones en *{Soluciones}*. ¡La práctica sin ayuda es la clave del aprendizaje para las certificaciones!
+====
+
+== Desafío 1: Fundamentos de Administración (Reactivos 1-20)
+
+Este primer set de 20 desafíos cubre los temas esenciales de la administración básica y avanzada, incluyendo CLI, permisos, gestión de usuarios, redirección, procesamiento de texto, montaje de sistemas de archivos y gestión de LVM.
+
+.Temas Cubiertos en este Módulo
+|===
+|Área |Certificaciones Relevantes |Posts de Referencia
+
+|**CLI y FHS**
+|LPIC-1, LFCS, RHCSA
+|Post 2, Post 3
+
+|**Permisos, Propiedad y Enlaces**
+|LPIC-1, LFCS, RHCSA
+|Post 4, Post 7
+
+|**Redirección y Procesamiento de Texto**
+|LPIC-1, LFCS, RHCSA
+|Post 5, Post 6
+
+|**Usuarios, Grupos y Sudo**
+|LPIC-1, LFCS, RHCSA
+|Post 8
+
+|**Almacenamiento (Particiones, Montaje, LVM)**
+|LPIC-1, LFCS, **RHCSA (Énfasis)**
+|Post 11, Post 12, Post 13
+|===
+
+[cols="1,1", options="header"]
+|===
+|Recursos |Descripción
+
+|*Desafíos Prácticos: Set A (Reactivos 1-20)* + 
+link:a.adoc[a.adoc] 
+|Contiene las instrucciones detalladas y los requisitos para cada uno de los 20 ejercicios.
+
+|*Soluciones: Set A* +
+link:a.sol.adoc[a.sol.adoc]
+|Contiene las soluciones paso a paso y los comandos exactos para verificar la correcta ejecución de los ejercicios.
+|===
+
+=== Instrucciones de Uso
+
+Para acceder al contenido, haz clic en el enlace del archivo correspondiente. Dado que este es un repositorio de GitHub, puedes abrir estos archivos directamente en la interfaz web o clonar el repositorio y abrirlos localmente con cualquier visor Asciidoc.
