@@ -89,6 +89,11 @@ Muestra una *lista del contenido* (archivos y subdirectorios) del directorio act
 
 ¡Con estos comandos, ya puedes empezar a explorar el corazón de tu sistema Linux! La práctica constante es clave para dominar la estructura de directorios y prepararte para tus certificaciones.
 
+// Enlace de la publicación original (para versiones fuera de GitHub)
+// link:https://www.rootzilopochtli.com/estructura-de-directorios-de-linux [Publicación Original del Blog]
+
+***
+
 == Invitación a la Comunidad 🚀
 
 Este _post_ forma parte de una serie dedicada a la arquitectura y administración de sistemas Linux. ¡Queremos construir el mejor recurso posible **con tu ayuda**!

@@ -1,5 +1,5 @@
 = Índice de Desafíos Prácticos - Módulo Experto
-Alex Callejas
+:author: Alex Callejas
 :doctype: article
 :revdate: Oct 18, 2025
 :keywords: ejercicios, comandos, lpic-1, lfcs, rhcsa

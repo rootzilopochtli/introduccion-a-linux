@@ -1,5 +1,5 @@
 = Dominando la Administración de Software: APT, DNF y Archivos Comprimidos en Linux
-Alex Callejas
+:author: Alex Callejas
 :doctype: article
 :revdate: Oct 13, 2025
 :keywords: apt, dnf, package, rpm, dpkg, software, gzip, zip
@@ -115,6 +115,9 @@ El comando `zip` es ideal para la *portabilidad* o cuando se trabaja en entornos
 Para una explicación más visual de las diferentes filosofías de gestión de paquetes, mira el siguiente video:
 
 link:https://www.youtube.com/watch?v=5E_kURWBhr8[▶️ ¿Qué gestor de paquetes deberías usar? Pacman, APT y DNF explicados]
+
+// Enlace de la publicación original (para versiones fuera de GitHub)
+// link:https://www.rootzilopochtli.com/administracion-de-software-y-archivos-comprimidos [Publicación Original del Blog]
 
 ***
 

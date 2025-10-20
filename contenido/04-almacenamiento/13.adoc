@@ -1,5 +1,5 @@
 = Gestión de Volumen Lógico (LVM): La Columna Vertebral del Almacenamiento Flexible en Linux
-Alex Callejas
+:author: Alex Callejas
 :doctype: article
 :revdate: Oct 16, 2025
 :keywords: LVM, Linux, RHCSA, LFCS, LPIC-1, Almacenamiento, SysAdmin
@@ -152,6 +152,9 @@ $ df -h /datos_empresariales
 Verás que el tamaño del sistema de archivos ha aumentado a 8 GB (el original de 5 GB más los 3 GB que añadimos).
 
 ¡Felicidades! Acabas de realizar una tarea fundamental de administración de sistemas que es un requisito indispensable en certificaciones como *RHCSA* y *LFCS*. Dominar LVM no solo te ayuda a aprobar, sino que te convierte en un administrador mucho más eficiente y preparado para entornos empresariales.
+
+// Enlace de la publicación original (para versiones fuera de GitHub)
+// link:https://www.rootzilopochtli.com/gestion-de-volumen-logico-lvm [Publicación Original del Blog]
 
 ***
 

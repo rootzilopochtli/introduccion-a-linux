@@ -1,5 +1,5 @@
 = Configuración Básica de Red en Linux: El Corazón de la Conectividad 🌐
-Alex Callejas
+:author: Alex Callejas
 :doctype: article
 :revdate: Oct 17, 2025
 :keywords: Networking, Linux, RHCSA, LFCS, SysAdmin, ip, nmcli, NetworkManager
@@ -126,6 +126,9 @@ Un administrador de sistemas sigue estos pasos ante un problema de red:
 6.  *Probar un nombre externo (DNS):* `ping google.com`. Si la IP externa funciona pero el nombre no, el problema es el *servicio DNS*.
 
 Dominar estas herramientas y el flujo de diagnóstico no solo te ayudará a aprobar los exámenes, sino que te convertirá en un solucionador de problemas de red mucho más eficiente. ¡A practicar!
+
+// Enlace de la publicación original (para versiones fuera de GitHub)
+// link:https://www.rootzilopochtli.com/configuracion-basica-de-red [Publicación Original del Blog]
 
 ***
 

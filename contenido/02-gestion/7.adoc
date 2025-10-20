@@ -1,5 +1,5 @@
 = Entendiendo los Enlaces Duros y Blandos (Simbólicos) en Linux 🔗
-Alex Callejas
+:author: Alex Callejas
 :doctype: article
 :revdate: Oct 8, 2025
 :keywords: linux, links, hard-links, soft-links, ls, comandos
@@ -138,6 +138,9 @@ $ ls -li documento.txt mi_acceso.txt
 Entender la naturaleza de cada enlace y utilizar la opción correcta del comando `ln` es un conocimiento esencial y recurrente en los exámenes de certificación de Linux.
 
 Para una explicación visual de cómo funcionan los enlaces duros y simbólicos, puedes ver el siguiente video: link:https://www.youtube.com/watch?v=FapBQOuASdo[ENLACES DUROS y ENLACES SIMBÓLICOS en LINUX].
+
+// Enlace de la publicación original (para versiones fuera de GitHub)
+// link:https://www.rootzilopochtli.com/entendiendo-los-enlaces-duros-y-blandos-simbolicos-en-linux [Publicación Original del Blog]
 
 ***
 

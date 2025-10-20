@@ -1,5 +1,5 @@
 = Fundamentos de la Administración Linux - Gestión de Usuarios y Grupos 🧑‍💻🔒
-Alex Callejas
+:author: Alex Callejas
 :doctype: article
 :revdate: Oct 9, 2025
 :keywords: linux, root, sudo, user, group, administración
@@ -340,6 +340,9 @@ $ su - manualuser
 ¡Felicidades! Has completado la creación manual de un usuario, entendiendo a fondo los componentes que `useradd` maneja por ti. Este es un conocimiento valioso para cualquier administrador de sistemas Linux.
 
 ¡Comparte tus resultados y cualquier desafío que hayas encontrado en los comentarios! Nos encantaría saber cómo te fue con este ejercicio.
+
+// Enlace de la publicación original (para versiones fuera de GitHub)
+// link:https://www.rootzilopochtli.com/gestion-de-usuarios-y-grupos [Publicación Original del Blog]
 
 ***
 

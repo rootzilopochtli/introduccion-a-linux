@@ -1,5 +1,6 @@
 = ✍️ El Arte de Procesar Texto y Usar Expresiones Regulares en Linux
 :author: Alex Callejas
+:doctype: article
 :revdate: Oct 7, 2025
 :keywords: cat, head, tail, awk, regrexp, grep, sort, merge, join, cut
 
@@ -136,6 +137,9 @@ Para aquellos que buscan ir más allá y prepararse para las certificaciones, aq
 *** Enlace: link:https://www.tutorialspoint.com/unix/unix_basic_utilities.htm[TutorialsPoint - Linux Basic Utilities] (Busca las secciones relevantes a `grep`, `sed`, `awk`).
 
 ¿Qué comando de procesamiento de texto es tu favorito o te ha sacado de un apuro? ¡Déjanos saber en los comentarios!
+
+// Enlace de la publicación original (para versiones fuera de GitHub)
+// link:https://www.rootzilopochtli.com/procesar-texto-y-usar-regex [Publicación Original del Blog]
 
 ***
 
