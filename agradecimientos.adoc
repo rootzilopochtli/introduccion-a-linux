@@ -1,6 +1,6 @@
 = Agradecimientos a los Contribuidores
 :author: Alex Callejas (@dark_axl)
-:revdate: 2025-10-04
+:revdate: 2025-10-19
 // Actualice esta fecha con la de la primera contribución significativa
 
 El proyecto *Introducción a Linux: De Usuario Básico a Administrador de Sistemas* no podría alcanzar sus objetivos educativos sin la valiosa ayuda y el compromiso de su comunidad.
@@ -18,6 +18,8 @@ La siguiente es una lista de las personas que han realizado contribuciones signi
 | **✨ Gunnar Wolf** | Cambios respecto a FHS que se han hecho más notorios. | https://github.com/gwolf[gwolf]
 | **✨ Aleph Ramos** | Adición del comando ```cat```. Adición de tip con ```stderr```.| https://github.com/alephramos[alephramos]
 | **✨ Petrohs** | Revisión, corrección de permisos, corrección de enlaces en agradecimientos y sugerencia de uso de licencia. | https://github.com/petrohs[petrohs]
+| **✨ Antonio Hernández Blas** | Reporte de typo en página web. | https://github.com/nihilismus[nihilismus]
+| **✨ Miguel Bernal Marin** | Ajuste de código a 80 caracteres. | https://github.com/miguelinux[miguelinux]
 //| **[Nombre del Contribuidor 3]** | Aporte de ejemplos de scripts | [Enlace al perfil de GitHub](https://github.com/alias)
 //| **[Nombre del Contribuidor 3]** | Aporte de ejemplos de scripts | [Enlace al perfil de GitHub](https://github.com/alias)
 |===

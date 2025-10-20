@@ -1,5 +1,5 @@
 = Introducción a Linux y Arquitectura del Sistema
-Alex Callejas
+:author: Alex Callejas
 :doctype: article
 :revdate: Oct 1, 2025
 :keywords: linux, historia, gnu, kernel, shell, distros, boot, runlevels
@@ -97,6 +97,9 @@ Systemd mantiene la compatibilidad con los runlevels de SysV, mapeando cada núm
 | **5** | graphical.target[graphical.target] | Modo multiusuario completo con **entorno gráfico** (GUI) y red. Es el modo de escritorio predeterminado.
 | **6** | reboot.target[reboot.target] | Reinicia el sistema.
 |===
+
+// Enlace de la publicación original (para versiones fuera de GitHub)
+// link:https://www.rootzilopochtli.com/1-introduccion-a-linux-y-arquitectura-del-sistema [Publicación Original del Blog]
 
 ***
 

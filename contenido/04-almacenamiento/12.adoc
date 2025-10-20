@@ -1,5 +1,5 @@
-= Post 12: Montaje y Desmontaje de Sistemas de Archivos en Linux
-Alex Callejas
+= Montaje y Desmontaje de Sistemas de Archivos en Linux
+:author: Alex Callejas
 :doctype: article
 :revdate: Oct 15, 2025
 :keywords: mount, umount, df, du
@@ -183,6 +183,9 @@ Este comando es crucial para la *limpieza del disco* y la *resolución de proble
 ***
 
 Dominar los comandos `mount`, `umount`, la configuración de `/etc/fstab` y las herramientas de supervisión de espacio (`df` y `du`) son habilidades fundamentales que un administrador de Linux debe tener. Practica estos comandos en tu laboratorio virtual para asegurar tu éxito en el examen de certificación. ¡Feliz administración\!
+
+// Enlace de la publicación original (para versiones fuera de GitHub)
+// link:https://www.rootzilopochtli.com/montaje-y-desmontaje-de-fs [Publicación Original del Blog]
 
 ***
 

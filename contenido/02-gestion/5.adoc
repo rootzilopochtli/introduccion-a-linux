@@ -1,5 +1,6 @@
 = 🚀 Potencia tu Terminal: Entradas, Salidas y Redirección en Linux
 :author: Alex Callejas
+:doctype: article
 :revdate: Oct 7, 2025
 :keywords: stdin, stdout, stderr, pipes
 
@@ -121,6 +122,9 @@ Dominar la redirección y las tuberías no es solo un requisito para aprobar el 
 3. Guardar ese resultado en un archivo llamado `disco_hoy.txt`.
 
 ¡Hasta la próxima publicación! 👋
+
+// Enlace de la publicación original (para versiones fuera de GitHub)
+// link:https://www.rootzilopochtli.com/entradas-salidas-y-redireccion [Publicación Original del Blog]
 
 ---
 

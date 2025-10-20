@@ -1,7 +1,7 @@
 = 🔒 El Guardián de tus Archivos en Linux: Permisos y Propiedad 🛡️
-Alex Callejas
+:author: Alex Callejas
+:doctype: article
 :revdate: Oct 4, 2025
-:sectnums:
 :keywords: file management, permissions, ownership
 
 image::images/portada_4.png[Permisos y Propiedad en Linux]

@@ -1,8 +1,8 @@
 = Administración de Almacenamiento en Linux: Dispositivos, Particiones y Formateo 💾
-Alex Callejas
+:author: Alex Callejas
 :doctype: article
 :revdate: Oct 14, 2025
-:keywords: apt, dnf, package, rpm, dpkg, software, gzip, zip
+:keywords: storage, lsblk, particiones, formateo, gdisk, parted, fdisk, df, du
 
 image::images/portada_11.png[Administración de Almacenamiento en Linux: Dispositivos, Particiones y Formateo 💾]
 
@@ -182,6 +182,9 @@ Comprender esta distinción es crucial para:
 image::images/infografia_calculo.png[La Diferencia entre Megabyte (MB) y Mebibyte (MiB)]
 
 Siempre que sea posible, es una buena práctica utilizar los prefijos binarios (KiB, MiB, GiB) al referirse a la capacidad de almacenamiento y memoria en entornos técnicos para eliminar la ambigüedad.
+
+// Enlace de la publicación original (para versiones fuera de GitHub)
+// link:https://www.rootzilopochtli.com/administracion-de-almacenamiento [Publicación Original del Blog]
 
 ***
 

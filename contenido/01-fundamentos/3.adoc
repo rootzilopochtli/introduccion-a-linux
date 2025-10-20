@@ -145,6 +145,9 @@ Para asegurar tus bases, esta serie de posts te ha preparado para dominar el ent
 
 ¡No olvides que la práctica diaria es la clave para convertirte en un administrador de sistemas competente!
 
+// Enlace de la publicación original (para versiones fuera de GitHub)
+// link:https://www.rootzilopochtli.com/trabajando-con-la-linea-de-comandos-cli [Publicación Original del Blog]
+
 ---
 
 === Invitación a la Comunidad 🚀

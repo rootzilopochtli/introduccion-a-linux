@@ -1,5 +1,5 @@
 = Post 9: El Arte de la Gestión de Procesos y Trabajos en Linux 🛠️
-Alex Callejas
+:author: Alex Callejas
 :doctype: article
 :revdate: Oct 10, 2025
 :keywords: linux, comandos, ps, top, htop, nice, renice, jobs, fg, bg, kill, cron, at, systemd timers
@@ -100,6 +100,9 @@ En sistemas que utilizan *Systemd* (como la mayoría de las distribuciones moder
 Dominar estas herramientas no solo te permitirá aprobar las certificaciones, sino que te convertirá en un administrador de sistemas más competente y eficaz, capaz de mantener el rendimiento y la estabilidad de cualquier servidor Linux.
 
 ¿Cuál de estas herramientas utilizas más en tu día a día? ¡Déjanos un comentario!
+
+// Enlace de la publicación original (para versiones fuera de GitHub)
+// link:https://www.rootzilopochtli.com/gestion-de-procesos-y-tareas [Publicación Original del Blog]
 
 ***
 
