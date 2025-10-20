@@ -70,3 +70,5 @@ Este módulo está hecho para la comunidad. Agradecemos tus contribuciones:
 3.  Realiza tus cambios y haz *commit* (`git commit -m 'feat: Mejorar la solución del Reactivo 15'`).
 4.  Empuja tus cambios (`git push origin mi-gran-solucion`).
 5.  Abre un **Pull Request (PR)**.
+
+### [🔗 Regresa](../README.md)

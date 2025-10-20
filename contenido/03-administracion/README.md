@@ -9,3 +9,4 @@ Contiene los temas esenciales para la administración diaria del sistema operati
 * Gestión de **Software y Paquetes** (`apt` vs. `yum`/`dnf`). [🔗 Post 10](10.adoc)
 * Manejo de **repositorios**. [🔗 Post 10](10.adoc)
 
+### [🔗 Regresa](../README.md)

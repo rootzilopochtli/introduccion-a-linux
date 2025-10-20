@@ -7,3 +7,5 @@ Explora cómo Linux organiza y administra el espacio en disco. Desde la creació
 * Sistemas de archivos comunes (**`ext4`**, **`XFS`**). [🔗 Post 11](11.adoc)
 * **Montaje** persistente y temporal (**`mount`**, `/etc/fstab`). [🔗 Post 12](12.adoc)
 * **Gestión de Volumen Lógico (LVM)**. [🔗 Post 13](13.adoc)
+
+### [🔗 Regresa](../README.md)

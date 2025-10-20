@@ -2,23 +2,27 @@
 
 ---
 
-1.  ### **Fundamentos y Arquitectura del Sistema**
+1.  ###  [🔗 **Fundamentos y Arquitectura del Sistema**](01-fundamentos/README.md)
     Introducción a la historia, los conceptos clave como el **Kernel** y el **Shell**, y la **Estructura de Directorios de Linux**. Es la base para cualquier usuario.
 
-2.  ### **Gestión de Archivos y Flujo de Comandos**
+2.  ###  [🔗 **Gestión de Archivos y Flujo de Comandos**](02-gestion/README.md)
     Aprende a manipular archivos y datos de forma avanzada. Cubre **permisos**, redirección de entrada/salida y herramientas de procesamiento de texto.
 
-3.  ### **Administración del Sistema Base**
+3.  ###  [🔗 **Administración del Sistema Base**](03-administracion/README.md)
     Sección dedicada a tareas esenciales de administración diaria, como la gestión de **usuarios**, **procesos** y **software**.
 
-4.  ### **Almacenamiento y Sistema de Archivos**
+4.  ###  [🔗 **Almacenamiento y Sistema de Archivos**](04-almacenamiento/README.md)
     Explora cómo Linux maneja el espacio en disco, desde la creación de **particiones** hasta la gestión avanzada de almacenamiento con **LVM**.
 
-5.  ### **Redes y Seguridad Básica**
+5.  ###  [🔗 **Redes y Seguridad Básica**](05-redes/README.md)
     Los cimientos para conectar y proteger el sistema. Aprende a configurar la red, a usar **SSH** y a establecer reglas de **firewall**.
 
-6.  ### **Automatización y Servicios Iniciales**
+6.  ###  [🔗 **Automatización y Servicios Iniciales**](06-automatizacion/README.md)
     Temas avanzados que te preparan para la eficiencia, incluyendo **Shell Scripting**, modelos de control de acceso como **SELinux**, y el gestor de arranque **systemd**.
+
+### [🔗 Módulo Experto. Desafíos Prácticos del Administrador Linux](07-experto/README.md)
+Diseñado para llevar tus habilidades al siguiente nivel y prepararte para las certificaciones LPIC-1, LFCS y RHCSA:
+* **Ejercicios prácticos** . Ejercicios guiados para convertirte en un verdadero experto.
 
 ---
 
@@ -57,4 +61,4 @@ No ignores las advertencias. Si ignoras estas advertencias, lo más probable es 
 
 ---
 
-[EN DESARROLLO]
+### [🔗 Regresa](../README.md)

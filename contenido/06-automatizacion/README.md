@@ -9,3 +9,5 @@ Esta sección se centra en la eficiencia y la seguridad a nivel de sistema. Cubr
 * El Gestor de Arranque **`systemd`** y comandos **`systemctl`** avanzados.
 
 [EN DESARROLLO]
+
+### [🔗 Regresa](../README.md)
