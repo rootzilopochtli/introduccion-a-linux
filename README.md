@@ -18,46 +18,46 @@ Este proyecto utiliza una doble estrategia de licenciamiento para distinguir ent
     * **Propósito:** Fomentar la máxima reutilización de los ejemplos de código en cualquier proyecto, sin restricciones.
     * **Archivo de Licencia** [🔗 LICENSE-CODE](LICENSE-CODE)
 
-## 📖 Temario
+## [🔗 📖 Temario](contenido/README.md)
 
 El contenido está dividido en seis módulos clave, diseñadas para guiarte de forma progresiva desde los conceptos fundamentales hasta la administración avanzada del sistema.
 
-### [🔗 Módulo 1. Fundamentos y Arquitectura del Sistema](01-fundamentos/README.md)
+### [🔗 Módulo 1. Fundamentos y Arquitectura del Sistema](contenido/01-fundamentos/README.md)
 Este módulo introduce al entorno Linux, cubriendo la historia, la arquitectura básica (**Kernel**, **Shell**, distribuciones), el proceso de arranque (como **GRUB/GRUB2**), y los niveles de ejecución (**systemd targets**). Se explora también la **Estructura de Directorios de Linux (FHS)** y la navegación básica en la **Línea de Comandos (CLI)**.
 
-### [🔗 Módulo 2. Gestión de Archivos y Flujo de Comandos](02-gestion/README.md)
+### [🔗 Módulo 2. Gestión de Archivos y Flujo de Comandos](contenido/02-gestion/README.md)
 Profundiza en la manipulación de archivos, incluyendo:
 * **Permisos** (**`chmod`**, **`chown`**, **ACLs**) y **Propiedad**.
 * Manejo del flujo de datos con **`stdin`**, **`stdout`**, **`stderr`**, **Redirección** y **Tuberías** (`|`).
 * Procesamiento de texto con **`grep`**, **`sed`**, **`awk`** y **expresiones regulares (regex)**.
 * Diferencia entre **enlaces duros y blandos (simbólicos)**.
 
-### [🔗 Módulo 3. Administración del Sistema Base](03-administracion/README.md)
+### [🔗 Módulo 3. Administración del Sistema Base](contenido/03-administracion/README.md)
 Temas esenciales para la administración diaria:
 * **Gestión de Usuarios y Grupos** (**`useradd`**, **`sudo`**, archivos clave como `/etc/passwd`).
 * **Gestión de Procesos** (**`ps`**, **`top`**, **`kill`**, **`cron`**, **`at`**).
 * **Gestión de Software y Paquetes** (`apt` vs. `yum`/`dnf`) y manejo de **repositorios**.
 
-### [🔗 Módulo 4. Almacenamiento y Sistema de Archivos](04-almacenamiento/README.md)
+### [🔗 Módulo 4. Almacenamiento y Sistema de Archivos](contenido/04-almacenamiento/README.md)
 Explora cómo Linux maneja el espacio en disco:
 * **Dispositivos, Particiones** (**`fdisk`**) y sistemas de archivos (**`ext4`**, **`XFS`**).
 * **Montaje** persistente y temporal (**`mount`**, `/etc/fstab`).
 * **Gestión de Volumen Lógico (LVM)**, incluyendo `PV`, `VG`, y `LV` (énfasis RHCSA/RH134 y LFCS).
 
-### [🔗 Módulo 5. Redes y Seguridad Básica](05-redes/README.md)
+### [🔗 Módulo 5. Redes y Seguridad Básica](contenido/05-redes/README.md)
 Los cimientos de la conexión y protección del sistema:
 * **Configuración Básica de Red** (IP, Gateway) y herramientas de diagnóstico (**`ping`**, **`ss`**, **`ip`**).
 * **Conexión Remota Segura con SSH** y uso de **llaves de confianza**.
 * **Introducción a la Seguridad y el Firewall** (**`firewalld`** y **`ufw`**).
 * **Monitoreo y Mantenimiento** con **`journalctl`** y **`systemctl`**.
 
-### [🔗 Módulo 6. Automatización y Servicios Iniciales](06-automatizacion/README.md)
+### [🔗 Módulo 6. Automatización y Servicios Iniciales](contenido/06-automatizacion/README.md)
 Temas avanzados que preparan para la eficiencia:
 * **Introducción al Shell Scripting** (estructura, variables, control).
 * **SELinux y AppArmor** (Modelos de Control de Acceso Obligatorio - MAC) (Énfasis RHCSA/RH134 y LFCS).
 * **El Gestor de Arranque systemd** y comandos **systemctl** avanzados.
 
-### [🔗 Módulo Experto. Desafíos Prácticos del Administrador Linux](07-experto/README.md)
+### [🔗 Módulo Experto. Desafíos Prácticos del Administrador Linux](contenido/07-experto/README.md)
 Diseñado para llevar tus habilidades al siguiente nivel y prepararte para las certificaciones LPIC-1, LFCS y RHCSA:
 * **Ejercicios prácticos** . Ejercicios guiados para convertirte en un verdadero experto.
 

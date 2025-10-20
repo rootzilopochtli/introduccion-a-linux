@@ -9,3 +9,4 @@ Profundiza en la manipulación avanzada de archivos, la administración de **per
 * Uso de **Expresiones Regulares (`regex`)**. [🔗 Post 6](6.adoc)
 * Diferencia entre **enlaces duros y blandos** (simbólicos). [🔗 Post 7](7.adoc)
 
+### [🔗 Regresa](../README.md)
