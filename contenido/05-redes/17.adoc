@@ -1,9 +1,10 @@
 = 🛠️ Monitoreo y Mantenimiento: Claves para un Sistema Linux Saludable
 :author: Alex Callejas
 :doctype: article
-:revdate: Oct 21, 2025
+:revdate: Oct 22, 2025
 :keywords: journalctl, systemctl, systemd, journal
 
+image::images/portada_17.png[Monitoreo y Mantenimiento]
 
 Mantener un sistema **Linux** en óptimas condiciones no es solo cuestión de configurarlo bien, sino también de **monitorearlo** y mantenerlo activamente. Esto es fundamental para cualquier administrador de sistemas que trabaje con certificaciones como **LPIC-1**, **LFCS**, o los módulos de **RHCSA** (RH104, RH124, RH134). 
 
