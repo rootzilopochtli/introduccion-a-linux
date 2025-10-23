@@ -1,0 +1,215 @@
+= 🛠️ Monitoreo y Mantenimiento: Claves para un Sistema Linux Saludable
+:author: Alex Callejas
+:doctype: article
+:revdate: Oct 21, 2025
+:keywords: journalctl, systemctl, systemd, journal
+
+
+Mantener un sistema **Linux** en óptimas condiciones no es solo cuestión de configurarlo bien, sino también de **monitorearlo** y mantenerlo activamente. Esto es fundamental para cualquier administrador de sistemas que trabaje con certificaciones como **LPIC-1**, **LFCS**, o los módulos de **RHCSA** (RH104, RH124, RH134). 
+
+Una vigilancia constante nos permite **prevenir fallos** antes de que ocurran y **diagnosticar problemas** rápidamente. A continuación, exploraremos dos pilares esenciales de esta tarea: la revisión de **logs** y la **gestión de servicios**.
+
+***
+
+== 🧐 Revisión de Logs del Sistema
+
+Los **registros (logs)** del sistema son el "diario" de tu máquina Linux. Contienen información vital sobre el estado, los eventos, los errores y las advertencias que ocurren a nivel de *kernel*, servicios y aplicaciones.
+
+=== 1. El Potente `journalctl` (systemd)
+
+En las distribuciones modernas que utilizan **systemd** (como la mayoría de las versiones recientes de Fedora, RHEL, CentOS, Debian, Ubuntu, etc.), el sistema de *logging* centralizado es gestionado por el *journal*, al cual se accede mediante el comando **`journalctl`**.
+
+Este comando ofrece una gran flexibilidad para filtrar y visualizar los logs:
+
+* **Ver todos los logs:**
++
+[source,bash]
+----
+$ sudo journalctl
+----
+* **Ver logs desde el último arranque:**
++
+[source,bash]
+----
+$ sudo journalctl -b
+----
+* **Ver logs de un servicio específico** (ej. SSH):
++
+[source,bash]
+----
+$ sudo journalctl -u sshd
+----
+* **Ver los últimos logs en tiempo real** (similar a `tail -f`):
++
+[source,bash]
+----
+$ sudo journalctl -f
+----
+* **Filtrar por nivel de prioridad** (ej. solo errores):
++
+[source,bash]
+----
+$ sudo journalctl -p err -b
+----
+
+El uso de `journalctl` simplifica la tarea de rastrear eventos en un único lugar, ofreciendo herramientas de filtrado mucho más robustas que los archivos tradicionales por sí solos.
+
+=== Ejemplo Práctico: Diagnóstico de un Servicio con Falla (HTTPD)
+
+Imagina que tu servidor web Apache (`httpd`) no está funcionando correctamente. Aquí te mostramos un paso a paso para diagnosticar el problema utilizando los logs:
+
+. **Verificar el estado del servicio:** Lo primero es saber si el servicio está activo o ha fallado.
++
+[source,bash]
+----
+$ systemctl status httpd
+----
++
+Si el estado indica `failed` o `inactive (dead)`, sabrás que hay un problema. La salida de este comando a menudo mostrará las últimas líneas de error relevantes del *journal*.
+
+. **Consultar logs específicos del servicio:** Para un análisis más profundo, utiliza `journalctl` filtrando por el servicio `httpd`:
++
+[source,bash]
+----
+$ sudo journalctl -u httpd --since "5 minutes ago"
+----
++
+Esto mostrará los logs de `httpd` de los últimos 5 minutos, que es un buen punto de partida si la falla acaba de ocurrir. Busca líneas que contengan palabras como `error`, `failed`, `fatal`, `cannot open`, `permission denied`.
+
+. **Filtrar por errores y prioridades:** Si los logs son muy extensos, puedes refinar la búsqueda para ver solo los mensajes de error:
++
+[source,bash]
+----
+$ sudo journalctl -u httpd -p err -b
+----
++
+Esto mostrará todos los mensajes de error (`-p err`) del servicio `httpd` desde el último arranque (`-b`).
+
+. **Revisar logs específicos de la aplicación:** Para servicios como Apache (HTTPD), además del *journal*, es común que tengan sus propios archivos de logs en `/var/log`. En el caso de Apache, los logs de errores se suelen encontrar en:
++
+[source,bash]
+----
+$ tail -f /var/log/httpd/error_log
+----
++
+(La ruta puede variar ligeramente según la distribución, por ejemplo, `/var/log/apache2/error.log` en Debian/Ubuntu). Aquí puedes encontrar detalles muy específicos de la aplicación que no siempre aparecen en el *journal* con el mismo nivel de detalle.
+
+Al seguir estos pasos, podrás identificar rápidamente la causa de la falla (por ejemplo, un puerto ya en uso, un archivo de configuración malformado, un problema de permisos, etc.) y tomar las acciones correctivas necesarias.
+
+=== 2. Archivos de Logs Tradicionales
+
+Aunque `journalctl` centraliza gran parte de la información, muchos logs **tradicionales** siguen siendo relevantes y se encuentran principalmente en el directorio **/var/log/**.
+
+* **`/var/log/messages`** (o `/var/log/syslog` en Debian/Ubuntu): Contiene mensajes globales del sistema, incluyendo *kernel*, *boot* y aplicaciones.
+* **`/var/log/secure`** (o `/var/log/auth.log`): Registra la actividad de autenticación, como inicios de sesión (incluyendo SSH) y permisos. Es crucial para el **monitoreo de seguridad**.
+* **`/var/log/dmesg`**: Contiene los mensajes del *kernel* desde el arranque.
+
+Puedes utilizar herramientas clásicas de manipulación de archivos para revisarlos:
+
+[source,bash]
+----
+$ tail -f /var/log/syslog
+$ grep "error" /var/log/messages
+----
+
+[NOTE]
+La **rotación de logs** es vital. Herramientas como `logrotate` se encargan de archivar, comprimir y eliminar periódicamente los archivos de log antiguos para evitar que consuman todo el espacio en disco.
+
+---
+
+== ⚙️ Gestión Básica de Servicios con `systemctl`
+
+La mayoría de las tareas de mantenimiento implican interactuar con los **servicios** (o *unidades*) del sistema, y aquí **`systemctl`** es el comando imprescindible en entornos *systemd*. Permite controlar el ciclo de vida de los servicios de manera uniforme y eficiente.
+
+Aquí tienes los comandos básicos que todo administrador debe dominar:
+
+=== 1. Iniciar un Servicio (Start)
+
+Si un servicio está detenido y necesitas ponerlo en marcha:
+
+[source,bash]
+----
+$ sudo systemctl start nombre_del_servicio
+----
+_Ejemplo: `$ sudo systemctl start httpd`_
+
+=== 2. Detener un Servicio (Stop)
+
+Para apagar un servicio, ya sea por mantenimiento o para detener una actividad no deseada:
+
+[source,bash]
+----
+$ sudo systemctl stop nombre_del_servicio
+----
+_Ejemplo: `$ sudo systemctl stop firewalld`_
+
+=== 3. Reiniciar un Servicio (Restart)
+
+Una combinación de detener e iniciar, útil después de modificar archivos de configuración:
+
+[source,bash]
+----
+$ sudo systemctl restart nombre_del_servicio
+----
+
+=== 4. Recargar Configuración (Reload)
+
+Muchos servicios pueden leer la nueva configuración sin reiniciarse completamente, lo que evita interrumpir conexiones activas. Si el servicio lo soporta:
+
+[source,bash]
+----
+$ sudo systemctl reload nombre_del_servicio
+----
+
+=== 5. Habilitar y Deshabilitar el Arranque Automático (Enable/Disable)
+
+Estos comandos son cruciales para el **mantenimiento a largo plazo**, asegurando que los servicios esenciales se inicien automáticamente con el sistema y que los innecesarios no lo hagan:
+
+* **Habilitar:** Asegura que el servicio se inicie en el próximo arranque:
++
+[source,bash]
+----
+$ sudo systemctl enable nombre_del_servicio
+----
+* **Deshabilitar:** Evita que el servicio se inicie automáticamente:
++
+[source,bash]
+----
+$ sudo systemctl disable nombre_del_servicio
+----
+
+=== 6. Verificar el Estado (Status)
+
+Para ver si un servicio está *activo*, *inactivo*, o ha fallado. Este es tu primer paso de **diagnóstico**:
+
+[source,bash]
+----
+$ systemctl status nombre_del_servicio
+----
+
+// Enlace de la publicación original (para versiones fuera de GitHub)
+// link:https://www.rootzilopochtli.com/monitoreo-y-mantenimiento-en-linux [Publicación Original del Blog]
+
+***
+
+== 🚀 Conclusión
+
+Dominar **`journalctl`** para la auditoría de logs y **`systemctl`** para la gestión de servicios son habilidades básicas pero **críticas** que diferencian a un administrador reactivo de uno **proactivo**. En el mundo de las certificaciones Linux, la eficiencia en el monitoreo y el mantenimiento es la clave para asegurar la **confiabilidad** y **disponibilidad** de cualquier sistema.
+
+**¿Qué comando de `journalctl` o `systemctl` utilizas con más frecuencia en tu rutina diaria? ¡Déjanos un comentario\!**
+
+***
+
+== Invitación a la Comunidad 🚀
+
+Este *post* forma parte de una serie dedicada a la arquitectura y administración de sistemas Linux. ¡Queremos construir el mejor recurso posible *con tu ayuda*!
+
+Te invitamos a:
+
+* *Clonar el Repositorio:* El código fuente de todos nuestros artículos está disponible en *GitHub*.
+* *Contribuir:* Si encuentras algún error, tienes sugerencias para mejorar la claridad de los conceptos o deseas proponer correcciones técnicas, no dudes en enviar un *Pull Request* (Solicitud de extracción).
+* *Comentar:* ¿Tienes una pregunta o un punto de vista diferente sobre algún concepto? Abre un *Issue* (Incidencia) en el repositorio para iniciar la discusión.
+
+Tu colaboración es vital para mantener este contenido preciso y actualizado.
+
+*¡Encuentra el repositorio y participa aquí:* link:https://github.com/rootzilopochtli/introduccion-a-linux[github.com/rootzilopochtli/introduccion-a-linux]
