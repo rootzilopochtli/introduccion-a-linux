@@ -172,14 +172,6 @@ Este video proporciona una visión general y ejemplos prácticos de cómo empeza
 
 ***
 
-== 🚀 Conclusión
-
-Dominar **`journalctl`** para la auditoría de logs y **`systemctl`** para la gestión de servicios son habilidades básicas pero **críticas** que diferencian a un administrador reactivo de uno **proactivo**. En el mundo de las certificaciones Linux, la eficiencia en el monitoreo y el mantenimiento es la clave para asegurar la **confiabilidad** y **disponibilidad** de cualquier sistema.
-
-**¿Qué comando de `journalctl` o `systemctl` utilizas con más frecuencia en tu rutina diaria? ¡Déjanos un comentario\!**
-
-***
-
 == Invitación a la Comunidad 🚀
 
 Este *post* forma parte de una serie dedicada a la arquitectura y administración de sistemas Linux. ¡Queremos construir el mejor recurso posible *con tu ayuda*!
