@@ -1,0 +1,161 @@
+= SELinux y AppArmor (Control de Acceso Obligatorio)
+:author: Alex Callejas
+:doctype: article
+:revdate: Oct 24, 2025
+:keywords: SELinux, AppArmor, MAC, RHCSA, LFCS, RH134, Seguridad Linux
+
+image::images/portada_19.png[]
+
+== 🛡️ Seguridad Reforzada en Linux: SELinux y AppArmor (Control de Acceso Obligatorio)
+
+En el mundo de la administración de sistemas Linux, la *seguridad* es primordial. Más allá de las herramientas de control de acceso discrecional (DAC) como los permisos de archivo tradicionales, los administradores profesionales recurren a mecanismos de seguridad más robustos, como los **Modelos de Control de Acceso Obligatorio (MAC)**. Este concepto es central en certificaciones avanzadas como **RHCSA** (particularmente el módulo **RH134**) y **LFCS**, que preparan a los profesionales para implementar seguridad a nivel empresarial.
+
+***
+
+=== 🛡️ Introducción a los Modelos de Control de Acceso Obligatorio (MAC)
+
+El **Control de Acceso Obligatorio (MAC)** es un modelo de seguridad donde el sistema operativo (SO) restringe la capacidad de un sujeto (como un usuario o un proceso) para acceder o realizar alguna operación en un objeto (como un archivo o un dispositivo de red). A diferencia del **Control de Acceso Discrecional (DAC)**, donde el propietario del recurso establece los permisos, en MAC es el **administrador central** o la **política de seguridad del SO** quien determina el acceso, y el propietario no puede anular esas reglas.
+
+MAC ofrece un nivel de protección superior porque:
+
+1.  **Aísla procesos:** Si un proceso malicioso o comprometido intenta acceder a recursos fuera de su ámbito definido, el MAC lo bloquea inmediatamente, limitando el daño potencial.
+2.  **Define el comportamiento:** Se establecen reglas que definen *exactamente* lo que un proceso puede hacer (y nada más), adhiriéndose al principio de **mínimo privilegio**.
+
+Dos de las implementaciones de MAC más conocidas en el ecosistema Linux son **SELinux** y **AppArmor**.
+
+***
+
+=== 🔴 SELinux: Security-Enhanced Linux (Énfasis RHCSA/RH134)
+
+**SELinux** (Security-Enhanced Linux) es el modelo MAC por defecto en distribuciones basadas en Red Hat (como RHEL, CentOS y Fedora), y su dominio es esencial para la certificación RHCSA. SELinux funciona asignando un **contexto de seguridad** a cada archivo y proceso, y luego utilizando **políticas** para definir cómo los contextos pueden interactuar entre sí.
+
+==== Modos de Operación de SELinux
+
+SELinux puede operar en tres modos principales, lo que permite a los administradores implementarlo de forma gradual y segura:
+
+1.  **`Enforcing` (Obligatorio):** 🚨 **Modo de máxima seguridad.** Aplica activamente la política de seguridad. Si una acción está prohibida, **la niega** y registra un error (*audit log*).
+2.  **`Permissive` (Permisivo):** ⚠️ **Modo de depuración/prueba.** **No aplica** la política, lo que significa que **no niega** ninguna acción. Sin embargo, registra un *log* de lo que habría negado.
+3.  **`Disabled` (Deshabilitado):** 🚫 **Modo inactivo.** SELinux está completamente apagado y no realiza ninguna verificación ni registro de políticas.
+
+==== Comandos Básicos de Gestión de SELinux
+
+Para la gestión diaria de SELinux, un administrador debe conocer los siguientes comandos:
+
+|===
+| Comando | Descripción
+
+| **`sestatus`**
+| Muestra el estado actual de SELinux: el modo, la política que se está cargando, y si está activado o no.
+
+| **`getenforce`**
+| Muestra de forma concisa el modo actual de SELinux (ej. *Enforcing* o *Permissive*).
+
+| **`setenforce [0\|1]`**
+| Cambia el modo de operación **temporalmente** sin reiniciar. `1` establece el modo *Enforcing*. `0` establece el modo *Permissive*.
+
+| **`semanage`**
+| Herramienta avanzada para modificar la política de SELinux (ej. puertos, tipos de contexto de archivo, etc.).
+
+| **`chcon`**
+| Cambia el contexto de seguridad SELinux de archivos/directorios.
+
+| **`restorecon`**
+| Restablece el contexto de seguridad de un archivo/directorio a su valor predeterminado según la política.
+|===
+
+==== Ejemplo Práctico: El Servicio HTTPD (Apache)
+
+Para entender cómo funciona SELinux, veamos el ejemplo del servicio web **HTTPD** (Apache). SELinux asigna un **contexto de seguridad** (una etiqueta) a cada componente del servicio.
+
+La regla fundamental que se aplica aquí es:
+[quote, Política SELinux]
+Un proceso que se ejecuta en el contexto `httpd_t` sólo puede interactuar (leer, escribir, ejecutar, etc.) con objetos que tengan una etiqueta que la política permita específicamente, como `httpd_algo_t`.
+
+A continuación se muestran los contextos (tipos) típicos asignados a los componentes de HTTPD en RHEL, todos compartiendo la "cabecera" `httpd_`:
+
+|===
+| Componente | Ruta de Archivo/Proceso | Contexto (Tipo) Típico
+
+| **Proceso (Dominio)**
+| `/usr/sbin/httpd -DFOREGROUND`
+| `httpd_t`
+
+| **Binario Principal**
+| `/usr/sbin/httpd`
+| `httpd_exec_t`
+
+| **Archivos de Configuración**
+| `/etc/httpd`
+| `httpd_config_t`
+
+| **Directorios de Contenido**
+| `/var/www/html`
+| `httpd_sys_content_t`
+
+| **Archivos de Logs**
+| `/var/log/httpd`
+| `httpd_log_t`
+
+| **Startup Script (systemd)**
+| `/usr/lib/systemd/system/httpd.service`
+| `systemd_unit_file_t`
+
+| **Puertos de Red**
+| `80/tcp`, `443/tcp`
+| `http_port_t`
+|===
+
+El poder de SELinux reside en esta separación:
+
+* El proceso (`httpd_t`) tiene permiso para leer archivos con la etiqueta `httpd_config_t` y `httpd_sys_content_t`.
+* El proceso (`httpd_t`) tiene permiso para escribir en archivos con la etiqueta `httpd_log_t`.
+* **Implicación de seguridad:** Si un atacante compromete el servicio HTTPD, el proceso malicioso *aún* se ejecuta como `httpd_t`. Si ese proceso intenta leer un archivo sensible como `/etc/shadow` (que tiene el contexto `shadow_t`), **SELinux lo bloquea**. Aunque los permisos DAC (tradicionales de Linux) del archivo `/etc/shadow` pudieran permitir la lectura por el usuario `apache`, la política MAC de SELinux lo **obligará** a negarse porque la regla: "El proceso `httpd_t` puede leer el archivo `shadow_t` " no existe.
+
+***
+
+=== 🛡️ SELinux vs. AppArmor: Comparación de MAC en Linux
+
+Mientras que SELinux es prominente en RHEL, **AppArmor** es el sistema MAC preferido en distribuciones como Ubuntu y SUSE. Ambos cumplen la función de Control de Acceso Obligatorio, pero tienen enfoques y arquitecturas diferentes.
+
+[cols="1,1,1"]
+|===
+| Característica | SELinux (Security-Enhanced Linux) | AppArmor (Application Armor)
+
+| **Modelo de Seguridad**
+| Basado en **Tipos (Type Enforcement)**. El acceso se basa en el **contexto de seguridad** (Tipo) del proceso y del recurso.
+| Basado en **Rutas de Archivo (Path-Based)**. El acceso se define a través de rutas de archivos, de forma similar al DAC.
+
+| **Complejidad**
+| Mayor. Curva de aprendizaje más pronunciada debido a la asignación de contextos (Tipo, Rol, Usuario, Sensibilidad).
+| Menor. Las reglas son más intuitivas y legibles, basadas en rutas y permisos de estilo DAC (r, w, k, etc.).
+
+| **Implementación**
+| Por defecto en **RHEL/CentOS/Fedora**. Integrado con las etiquetas de contexto del sistema de archivos.
+| Por defecto en **Ubuntu/SUSE**. Utiliza perfiles almacenados en el sistema de archivos.
+
+| **Granularidad**
+| Muy alta. Permite un control extremadamente fino sobre cada interacción del proceso con el sistema.
+| Alta. Proporciona un buen nivel de control, pero puede ser menos detallado que SELinux en escenarios complejos.
+|===
+
+**Conclusión:** Tanto SELinux como AppArmor proporcionan una capa de seguridad crucial para un sistema Linux. SELinux (**RHCSA/RH134**) es la opción más poderosa y granular. AppArmor (**LFCS**) ofrece una alternativa más sencilla de auditar y mantener. Dominar al menos uno de estos sistemas MAC es una habilidad esencial para cualquier administrador certificado.
+
+
+// Enlace de la publicación original (para versiones fuera de GitHub)
+// link:https://www.rootzilopochtli.com/seguridad-reforzada-en-linux [Publicación Original del Blog]
+
+***
+
+== Invitación a la Comunidad 🚀
+
+Este *post* forma parte de una serie dedicada a la arquitectura y administración de sistemas Linux. ¡Queremos construir el mejor recurso posible *con tu ayuda*!
+
+Te invitamos a:
+
+* *Clonar el Repositorio:* El código fuente de todos nuestros artículos está disponible en *GitHub*.
+* *Contribuir:* Si encuentras algún error, tienes sugerencias para mejorar la claridad de los conceptos o deseas proponer correcciones técnicas, no dudes en enviar un *Pull Request* (Solicitud de extracción).
+* *Comentar:* ¿Tienes una pregunta o un punto de vista diferente sobre algún concepto? Abre un *Issue* (Incidencia) en el repositorio para iniciar la discusión.
+
+Tu colaboración es vital para mantener este contenido preciso y actualizado.
+
+*¡Encuentra el repositorio y participa aquí:* link:https://github.com/rootzilopochtli/introduccion-a-linux[github.com/rootzilopochtli/introduccion-a-linux]
