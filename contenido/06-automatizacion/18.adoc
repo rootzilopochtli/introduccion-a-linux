@@ -1,0 +1,195 @@
+= 🚀 Introducción al Shell Scripting para Administradores Linux
+:author: Alex Callejas
+:doctype: article
+:revdate: Oct 23, 2025
+:keywords: shell scripting, bash, linux, lpic-1, lfcs, rhcsa, automatización, debugging
+
+image::images/portada_18.png[Introducción al Shell Scripting para Administradores Linux]
+
+El *Shell Scripting* es una habilidad fundamental para cualquier administrador de sistemas Linux, ya sea que te prepares para *LPIC-1*, *LFCS* o *RHCSA*. Dominar los scripts de Bash te permite automatizar tareas repetitivas, gestionar configuraciones y simplificar tu trabajo diario. Es el puente entre el conocimiento de los comandos y la verdadera eficiencia operativa.
+
+***
+
+== La Estructura de un Script Simple
+
+Todo script de Bash debe comenzar con una línea especial conocida como *shebang*. Esta línea le indica al sistema operativo qué intérprete debe usar para ejecutar el archivo.
+
+=== Shebang: `#!/bin/bash`
+
+[source,bash]
+----
+#!/bin/bash
+----
+
+  * `#!` (hash-bang o shebang) es una combinación de caracteres que siempre debe estar al inicio de la primera línea.
+  * `/bin/bash` es la ruta al intérprete de Bash, el shell más común en distribuciones como Red Hat Enterprise Linux (RHEL/CentOS/Fedora) y Ubuntu/Debian.
+
+Una vez que el sistema sabe cómo ejecutar el script, puedes incluir comandos de Bash y la lógica de programación.
+
+***
+
+== Variables, Entradas de Usuario y Control de Flujo
+
+=== 1. Variables
+
+Una *variable* es un contenedor que almacena un valor. En Bash, las variables se crean y se asignan de forma sencilla, sin necesidad de declarar un tipo:
+
+  * *Asignación:* `NOMBRE_VARIABLE=valor` (¡sin espacios alrededor del `=`).
+  * *Acceso:* Para usar el valor de la variable, la antecedemos con el símbolo `$`: `$NOMBRE_VARIABLE`.
+
+[source,bash]
+----
+#!/bin/bash
+MI_USUARIO="sysadmin"
+RUTA_LOG="/var/log/mi_app.log"
+echo "El usuario de este script es: $MI_USUARIO"
+echo "Revisando el log en: $RUTA_LOG"
+----
+
+=== 2. Entrada del Usuario (`read`)
+
+Para hacer que los scripts sean interactivos, utilizamos el comando `read`, que toma la entrada del usuario y la almacena en una variable:
+
+[source,bash]
+----
+#!/bin/bash
+echo "Por favor, introduce tu nombre:"
+read NOMBRE
+echo "¡Hola, $NOMBRE! Bienvenido al scripting."
+----
+
+=== 3. Estructuras de Control (Introducción)
+
+Las *estructuras de control* permiten que un script tome decisiones (`if/else`) o repita tareas (`for`/`while`). Esto es lo que añade la verdadera lógica a tus scripts.
+
+==== Condicional `if` (Introducción)
+
+La estructura `if` evalúa una condición. Si es verdadera, ejecuta el bloque de comandos; si no, puede ejecutar un bloque alternativo (`else`).
+
+[source,bash]
+----
+#!/bin/bash
+read -p "Introduce un número: " NUMERO
+
+if [ $NUMERO -gt 10 ]; then
+    echo "El número es mayor que 10."
+else
+    echo "El número es 10 o menor."
+fi
+----
+
+(Nota: `-gt` significa "greater than", mayor que. Las condiciones de prueba suelen ir entre `[ ]`.)
+
+---
+
+== 📝 Plantilla de Scripting Estándar
+
+Para mantener la claridad y la estandarización, se recomienda utilizar una plantilla bien estructurada. Esta plantilla ayuda a documentar el script y a organizar sus diferentes componentes.
+
+[source,bash]
+----
+#!/bin/bash
+#
+# IDENTIFICACION
+# Script: gestion_usuarios.sh
+# Autor: Tu Nombre
+# Fecha: 2025-10-23
+# Descripcion: Script para crear o modificar usuarios en el sistema.
+
+# VARIABLES
+LOG_FILE="/tmp/script_ejecucion.log"
+FECHA=$(date +%Y%m%d_%H%M%S)
+
+# COMANDOS
+echo "Inicio de la ejecución: $FECHA" >> $LOG_FILE
+# Aquí van los comandos, funciones y lógica del script.
+----
+
+---
+
+== 🔍 Debugging con `set -x`
+
+Una herramienta esencial para depurar (debugging) scripts de Bash es la opción `set -x`.
+
+Al incluir *`set -x`* en tu script, el shell de Bash entrará en *modo de rastreo (trace mode)*. Esto significa que antes de ejecutar cada comando, el shell lo imprimirá en la salida estándar (stderr), después de haber realizado todas las sustituciones (variables, comandos, etc.).
+
+*Uso práctico:*
+
+  * Coloca `set -x` justo antes de la sección de tu script que quieres depurar.
+  * Coloca `set +x` después de esa sección para desactivar el rastreo y volver a la ejecución normal.
+
+Esto es increíblemente útil para ver qué valores tienen las variables en tiempo de ejecución o cómo se expanden los comandos.
+
+---
+
+== Ejemplo Práctico Usando la Plantilla
+
+Este script pide un nombre de usuario y un directorio para crear, e incluye la opción de depuración para mostrar el flujo:
+
+[source,bash]
+----
+#!/bin/bash
+#
+# IDENTIFICACION
+# Script: crear_directorio.sh
+# Autor: Admin Linux
+# Fecha: 2025-10-23
+# Descripcion: Pide un nombre de usuario y crea un directorio en /tmp.
+
+# VARIABLES
+FECHA_ACTUAL=$(date +%F) # Formato YYYY-MM-DD
+DIRECTORIO_BASE="/tmp"
+
+# COMANDOS
+
+# Activar modo de rastreo para ver las sustituciones de variables
+set -x
+
+# 1. Petición de entrada de usuario
+read -p "Introduce un nombre de usuario para el directorio: " NOMBRE_USUARIO
+
+# 2. Creación del nombre completo del directorio
+NOMBRE_DIR="${DIRECTORIO_BASE}/${NOMBRE_USUARIO}_${FECHA_ACTUAL}"
+
+# 3. Estructura de control simple
+if [ -d "$NOMBRE_DIR" ]; then
+    echo "El directorio $NOMBRE_DIR ya existe."
+else
+    mkdir "$NOMBRE_DIR"
+    echo "Directorio $NOMBRE_DIR creado con éxito."
+fi
+
+# Desactivar modo de rastreo
+set +x
+
+echo "Proceso finalizado."
+----
+
+Este video proporciona una visión general y ejemplos prácticos de cómo empezar a escribir scripts de Bash: link:https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3DkYJ0hHjP1d0[Getting Started With Shell Scripting - Basics].
+
+// Enlace de la publicación original (para versiones fuera de GitHub)
+// link:https://www.rootzilopochtli.com/introduccion-al-shell-scripting [Publicación Original del Blog]
+
+***
+
+== 🚀 Conclusión
+
+Dominar **`journalctl`** para la auditoría de logs y **`systemctl`** para la gestión de servicios son habilidades básicas pero **críticas** que diferencian a un administrador reactivo de uno **proactivo**. En el mundo de las certificaciones Linux, la eficiencia en el monitoreo y el mantenimiento es la clave para asegurar la **confiabilidad** y **disponibilidad** de cualquier sistema.
+
+**¿Qué comando de `journalctl` o `systemctl` utilizas con más frecuencia en tu rutina diaria? ¡Déjanos un comentario\!**
+
+***
+
+== Invitación a la Comunidad 🚀
+
+Este *post* forma parte de una serie dedicada a la arquitectura y administración de sistemas Linux. ¡Queremos construir el mejor recurso posible *con tu ayuda*!
+
+Te invitamos a:
+
+* *Clonar el Repositorio:* El código fuente de todos nuestros artículos está disponible en *GitHub*.
+* *Contribuir:* Si encuentras algún error, tienes sugerencias para mejorar la claridad de los conceptos o deseas proponer correcciones técnicas, no dudes en enviar un *Pull Request* (Solicitud de extracción).
+* *Comentar:* ¿Tienes una pregunta o un punto de vista diferente sobre algún concepto? Abre un *Issue* (Incidencia) en el repositorio para iniciar la discusión.
+
+Tu colaboración es vital para mantener este contenido preciso y actualizado.
+
+*¡Encuentra el repositorio y participa aquí:* link:https://github.com/rootzilopochtli/introduccion-a-linux[github.com/rootzilopochtli/introduccion-a-linux]
